@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useEffect, useState } from 'react/cjs/react.development'
+import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 import GlitchedWriter, {
@@ -80,7 +80,7 @@ export default function Home() {
                   logs.map((e,i) => <p className="logList" key={`logs_${i}`} dangerouslySetInnerHTML={{__html:e}}></p>)
               }
           </div>
-          <pre><output id="output"></output><div className="user-input"><span className="incentive">$></span><input type="text"/></div></pre>
+          <pre><output id="output"></output><div className="user-input"><span className="incentive">&gt;&gt;</span><input type="text"/></div></pre>
         </div>
       </main>
 
