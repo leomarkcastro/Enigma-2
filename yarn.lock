@@ -1370,6 +1370,11 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
+glitched-writer@^2.0.29:
+  version "2.0.29"
+  resolved "https://registry.yarnpkg.com/glitched-writer/-/glitched-writer-2.0.29.tgz#36598b95e0aaa1148b5f6094e5be758f1b35d0ba"
+  integrity sha512-ItmmiFTSKVIbs/ngTLAszsu2czKYXYar54GgJcST5U6BH7sAaivG3fgDJFDIgNaau7rGadV5bLu3QThd5iAC8w==
+
 glob-parent@^5.1.2, glob-parent@~5.1.0:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
