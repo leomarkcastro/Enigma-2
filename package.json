@@ -8,13 +8,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "crypto-js": "^4.1.1",
+    "fabric": "^4.6.0",
     "glitched-writer": "^2.0.29",
+    "howler": "^2.2.3",
     "next": "12.0.3",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "secure-web-storage": "^1.0.2"
   },
   "devDependencies": {
+    "autoprefixer": "^9",
     "eslint": "7",
-    "eslint-config-next": "12.0.3"
+    "eslint-config-next": "12.0.3",
+    "postcss": "^7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
   }
 }

@@ -57,7 +57,7 @@ pre {
     opacity: 1;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 }
 
@@ -66,7 +66,7 @@ pre {
     opacity: 1;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 }
 @-webkit-keyframes blink {
@@ -95,36 +95,11 @@ pre {
   -webkit-animation: none;
           animation: none;
 }
-#output a {
-  color: #fcab10;
-  text-decoration: none;
-  text-shadow: 0 0 5px #fcab10;
-}
-#output a:hover {
-  font-weight: bold;
-}
-#output b {
-  font-weight: normal;
-}
-#output b:hover {
-  color: #5f5566;
-  text-shadow: 0 0 5px #5f5566;
-}
-#output strong {
-  font-weight: normal;
-  color: #f05d5e;
-  text-shadow: 0 0 5px #f05d5e;
-}
-#output i {
-  color: #5f5566;
-  text-shadow: 0 0 5px #5f5566;
-  font-style: normal;
-}
 
 .wrapper {
-  padding: 2rem;
   overflow-y: scroll;
-  height: 100%;
+  padding: 4rem;
+  height: 100vh;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -134,11 +109,10 @@ pre {
 
 .user-input {
   display: flex;
-  display: none;
 }
 
-.incentive {
-  color: #fcab10;
+.hidden{
+  display: none;
 }
 
 input {
@@ -154,4 +128,40 @@ input {
 
 .logList{
     margin: 0;
+}
+
+.log{
+  overflow-y: auto;
+  -webkit-animation: text-blink 0.01s steps(2) infinite;
+          animation: text-blink 0.01s steps(2) infinite;
+}
+
+/* COLORS */
+
+.red{
+  color: red;
+}
+
+.yellow{
+  color: yellow;
+}
+
+.green{
+  color: lime;
+}
+
+.black{
+  color: black;
+}
+
+.absolute{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.jumpScare{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;  
 }
