@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import Link from 'next/link'
+
 
 import soundList from "../data/sounds";
 import _initSecSore from '../data/ews'
@@ -55,7 +57,7 @@ export default function Shrmith() {
         <p className="text-sm text-center">Thank you for visiting will_the_what_the_f website.</p>
         <p className="text-sm text-center">Nice one decrypting that stupid cryptic message.</p>
 
-        <a className="mt-20" href="/">Go back to console</a>
+        <Link className="mt-20" href="/">Go back to console</Link>
 
       </div>
      
