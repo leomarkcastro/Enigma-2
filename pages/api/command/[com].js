@@ -3,7 +3,7 @@ import commands from "../../../data/commands"
 
 export default async function handler(req, res) {
     let { com } = req.query
-    com = com.replaceAll("~", '/')
+    com = com.replace(/~/g, '/')
     if (req.method === 'POST') {
         let com_parse = com.split(" ")
         if (com_parse[0] in commands){
