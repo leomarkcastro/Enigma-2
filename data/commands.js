@@ -1,6 +1,7 @@
 import cryptoJs from "crypto-js"
 import cases from "./cases"
 import { getDirectory, getFile } from "./file_list"
+import fetch_quote from "./quotes"
 
 const easter = {
     "beep": async (status) => {
@@ -46,26 +47,15 @@ const commands = {
                         "help - Commands",,
                         "<br/>",
                         "<code class='text-yellow-400'>cls</code> - Clears Screen",
-                        "<code class='text-yellow-400'>path</code> - Shows your current directory",
-                        "<code class='text-yellow-400'>dir &lt;location&gt;</code> - Shows All Files and Directory in the Server",
+                        "<code class='text-yellow-400'>path</code> - Shows your current directory path",
+                        "<code class='text-yellow-400'>dir</code> - Shows Files and Directory in the current directory",
+                        "<code class='text-yellow-400'>dir &lt;location&gt;</code> - Shows Files and Directory in the given directory address",
                         "<code class='text-yellow-400'>move &lt;location&gt;</code> -   Moves to a child subdirectory",
                         "<code class='text-yellow-400'>move ..</code> - Moves up to from the directory parent",
                         "<code class='text-yellow-400'>move /</code> - Moves you back to the root directory",
                         "<code class='text-yellow-400'>read &lt;file&gt;</code> - Reads the specified file in the current directory",
-                        props.player.dev_switch ? "<code class='text-blue-400'>gl_sys_check</code> - [Dev] Calls the program that executes the system check" : "",
-                        //"<code class='text-yellow-400'>net test</code> - Sends a test net packet to central server",
-                        //"<code class='text-yellow-400'>net fetch &lt;id&gt;</code> - Requests a file from central server based on specified id",
-                        //"<code class='text-yellow-400'>net index</code> - Gets all available id files in the central database",
-                        //"<code class='text-yellow-400'>net post &lt;file&gt;</code> - Uploads specified file at current directory to central server",
-                        //"<code class='text-yellow-400'>db test</code> - Checks database connection with local database",
-                        //"<code class='text-yellow-400'>db post &lt;id&gt; &lt;string_data&gt;</code> - Upload a data in database with provided unique id and string data",
-                        //"<code class='text-yellow-400'>db read &lt;id&gt;</code> - Requests data from database based on provided id",
-                        //"<code class='text-yellow-400'>db del &lt;id&gt;</code> - Deletes data from database based on provided id",
-                        //"<code class='text-yellow-400'>db admin backup</code> - Back ups the current instance of database",
-                        //"<code class='text-yellow-400'>db admin recover</code> - Restores a db backup point",
-                        "<code class='text-yellow-400'>restart soft</code> - Restarts the server to fix small errors",
-                        "<code class='text-yellow-400'>restart hard</code> - Restarts the server back to the very beginning",
                         "<code class='text-green-400'>glory_me</code> - Shows motivational message <code class='text-green-500'>in case you dont know what to do</code>",
+                        "<code class='text-blue-400'>progress</code> - Shows the receipt of your progress in the game</code>",
                         "<br/>"
                     ],
                     permanent: false,
@@ -186,47 +176,68 @@ const commands = {
             type: `${process.env.NEXT_PUBLIC_T_TEXTSET}_${process.env.NEXT_PUBLIC_PX_PROGRESS}`
         }
     },
-
-    "gl_sys_check" : async (commands, props) => {
-        //console.log(props)
-        props = await JSON.parse(props)
-        if(!(props["player"].dev_switch)) return {data: [
-            `<span class="red">Invalid Command</span>`,
-            "<br/>"
-        ], permanent: false, command:commands[0], success:false, type:process.env.NEXT_PUBLIC_T_TEXTSET}
-
-        if (commands[1]){
-            switch(commands[1]){
-                case 'conn':
-                    return {
-                        data :  `${process.env.NEXT_PUBLIC_T_C_REDIRECT}`,
-                        data2: "/pixels",
-                        permanent: false,
-                        type:  `${process.env.NEXT_PUBLIC_T_COMMAND}`
-                    };
-            }
-        }
-
+    "glory_me" : async (commands, props) => {
+        //props = await JSON.parse(props)
+      
         return {
             data: [
-                "<br/>==========================================",
-                "<span class='text-blue-600'>GLOBAL SYSTEM CHECK</span> <br/><br/>",
-                "This program was to be used to inititate self maintenance of this Linulitis Server v0.1.1",
-                "Again, this program should not see the light of the day because the program I had made for this institute SHOULD not fail anymore unless some ruthless maggot throws a wrench in this code.",
-                "But I had written this code either way, in case the tragic day had finally come.",
-                "This sub program should help you guide on what tests you should do for the 'general system recovery' routine to be called<br/><br/>",
-                "Else, please call this self test functions below and make sure all of them fail before this program activates the 'recovery mode'",
-                "<br/><br/>",
-                ` &#9634; - Connection Self Check Up [not tested yet] &gt; Call Using <span class="text-yellow-400">gl_sys_check conn</span>`,
-                ` &#9634; - Database Self Check Up   [not tested yet] &gt; Call Using <span class="text-yellow-400">gl_sys_check db</span> `,
-                ` &#9634; - Hardware Integrity Check [not tested yet] &gt; Call Using <span class="text-yellow-400">gl_sys_check hdInCh</span> `,
-                "<br/>==========================================",
+                "---<br/><br/>Inspirational Quotes",
+                fetch_quote(),
+                "<br/>---<br/>"
             ],
             permanent: false,
             type: `${process.env.NEXT_PUBLIC_T_TEXTSET}`
         }
         
     },
+
+    "progress" : async (commands, props) => {
+        props = await JSON.parse(props)
+        let player = props.player
+        
+        if (!player){
+            return {
+                data: [
+                    "Error Parsing",
+                ],
+                permanent: false,
+                type: `${process.env.NEXT_PUBLIC_T_TEXTSET}`
+            }
+        }
+
+        let totalP = 0
+        totalP += player.e2_ttpkmn ? 1 : 0
+        totalP += player.e2_sfcd ? 1 : 0
+        totalP += player.e2_magellan ? 1 : 0
+        totalP += player.e2_ntpass ? 1 : 0
+        totalP += player.e2_orli ? 1 : 0
+        totalP += player.e2_wotwil ? 1 : 0
+
+        switch(props.status){
+            default:
+                return {
+                    data: [
+                        "<br/>===============================<br/>",
+                        "<br/>",
+                        "Game Progress",
+                        "<br/>",
+                        `<code style="${player.e2_ttpkmn ?  'color: #a64d79">Done' : 'color: white">....'}</code> - Pick Lock `,
+                        `<code style="${player.e2_sfcd ?    'color: #d2afff">Done' : 'color: white">....'}</code> - Cards Shuffle`,
+                        `<code style="${player.e2_magellan ?'color: #dfa98f">Done' : 'color: white">....'}</code> - Atlas Venture`,
+                        `<code style="${player.e2_ntpass ?  'color: #353839">Done' : 'color: white">....'}</code> - Note Password`,
+                        `<code style="${player.e2_orli ?    'color: #ff7373">Done' : 'color: white">....'}</code> - Orbitals`,
+                        `<code style="${player.e2_wotwil ?'color: #16537e">Done' : 'color: white">....'}</code> - Crypted`,
+                        "<br/><br/>",
+                        (totalP == 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro with this picture, send a wink and wait patiently." : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
+                        "<br/>===============================<br/><br/>",
+                    ],
+                    permanent: false,
+                    type: `${process.env.NEXT_PUBLIC_T_TEXTSET}`
+                }
+        }
+        
+    },
+
 }
 
 export default commands

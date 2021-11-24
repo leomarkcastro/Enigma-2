@@ -12,12 +12,9 @@ import cryptoJs from 'crypto-js'
 import { useRouter } from 'next/router'
 
 let introText = [
-  "Maroros City C.D.OS",
-  "Establish 2001",
-  "Property of Maroros City Development Council",
-  `<span class="yellow">MPD Institute 2008</span>`,
-  `"We are here to <span class="green">serve people</span>"`,
-  "",
+  "<span class='yellow'>ICPEP.SE BulSU Chapter</span>",
+  "Enigma 2 Console",
+  `The first <span class="green">3</span> Winners has a prize of P150`,
   "Loading Database..."
 ]
 
