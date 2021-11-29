@@ -36,6 +36,12 @@ function dummyDirectories(names){
     return _ret
 }
 
+
+const green = (x) => `<span class='text-green-500'>${x}</span>`
+const red = (x) => `<span class='text-red-500'>${x}</span>`
+const blue = (x) => `<span class='text-blue-500'>${x}</span>`
+const yellow = (x) => `<span class='text-yellow-500'>${x}</span>`
+
 const root = directory(
     "root",
     true,
@@ -154,16 +160,16 @@ const root = directory(
             ]),
             
         }),
-        ...dummyDirectories(
-            ["node_mods", "answers_to_all_questions","this_folder_has_nothing", "windows_f_you"]
-        ),
-        ...file("icpep.txt", true, [
-            "ICPEP."
+        ...file("readme.txt", true, [
+            "Readme<br/><br/>",
+            "You have to use this console to find the games. The games come in the form of website links which are located on some file inside the folders of this console<br/><br/>",
+            `Note that you're gonna use  ${green("dir")}, ${blue("move")}, and ${yellow("read")} commands while exploring the labyrinth that is this console. Not really a labyrinth. All the games are located in the 'enigma' folder and dev notes are located in the 'about' folder.<br/><br/>`,
+
         ]),
     }
 ).root
 
-function getDirectory(address){
+function getDirectory(address, player_data){
 
     let address_list
 

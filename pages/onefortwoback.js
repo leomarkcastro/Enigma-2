@@ -72,6 +72,9 @@ export default function Orbs() {
 
   function loadStart(){
     let dat = locSecStore.getItem("e2_player")
+    if (! dat.e2_s_orli ){
+      locSecStore.setItem("e2_player", {...dat, e2_s_orli: true})
+    }
     if (dat.e2_orli == true){
       setFinish(true)
     }

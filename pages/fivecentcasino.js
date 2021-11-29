@@ -138,9 +138,14 @@ export default function Shuffler() {
       soundList.s_success.play()
     }
     else{
-      totalLives.pop()
+      if (totalLives.length){
+        totalLives.pop()
+        setTotalLives(totalLives)
+      }
+      else{
+        setTotalScore(Math.max(0,totalScore-1))
+      }
       soundList.wrong.play()
-      setTotalLives(totalLives)
     }
 
     setTimeout(() => {
@@ -203,6 +208,11 @@ export default function Shuffler() {
 
   function loadStart(){
     let dat = locSecStore.getItem("e2_player")
+    
+    if (! dat.e2_s_sfcd ){
+      locSecStore.setItem("e2_player", {...dat, e2_s_sfcd: true})
+    }
+
     if (dat.e2_sfcd == true){
       setFinish(true)
     }

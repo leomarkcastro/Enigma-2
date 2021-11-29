@@ -110,6 +110,9 @@ export default function NotePass() {
 
   function loadStart(){
     let dat = locSecStore.getItem("e2_player")
+    if (! dat.e2_s_ntpass ){
+      locSecStore.setItem("e2_player", {...dat, e2_s_ntpass: true})
+    }
     if (dat.e2_ntpass == true){
       setFinish(true)
     }

@@ -40,11 +40,20 @@ const commands = {
     
     "help" : async (commands, props) => {
         props = await JSON.parse(props)
+        let player = props.player
         switch(props.status){
             default:
                 return {
                     data: [
                         "help - Commands",,
+                        "<br/>",
+                        player.e2_s_ttpkmn ? "<code class='text-purple-400'>game lock</code> - Redirects you to website to play the pick lock game</code>" : '',
+                        player.e2_s_sfcd ? "<code class='text-purple-400'>game cards</code> - Redirects you to website to play the card shuffling game</code>" : '',
+                        player.e2_s_magellan ? "<code class='text-purple-400'>game atlas</code> - Redirects you to website to play the atlas adventurer game</code>" : '',
+                        player.e2_s_ntpass ? "<code class='text-purple-400'>game notes</code> - Redirects you to website to play the note picking game</code>" : '',
+                        player.e2_s_orli ? "<code class='text-purple-400'>game orbits</code> - Redirects you to website to play the orbital puzzle game</code>" : '',
+                        "<br/>",
+                        "<code class='text-blue-400'>progress</code> - Shows the receipt of your progress in the game</code>",
                         "<br/>",
                         "<code class='text-yellow-400'>cls</code> - Clears Screen",
                         "<code class='text-yellow-400'>path</code> - Shows your current directory path",
@@ -55,12 +64,41 @@ const commands = {
                         "<code class='text-yellow-400'>move /</code> - Moves you back to the root directory",
                         "<code class='text-yellow-400'>read &lt;file&gt;</code> - Reads the specified file in the current directory",
                         "<code class='text-green-400'>glory_me</code> - Shows motivational message <code class='text-green-500'>in case you dont know what to do</code>",
-                        "<code class='text-blue-400'>progress</code> - Shows the receipt of your progress in the game</code>",
-                        "<br/>"
+                        "<br/>",
                     ],
                     permanent: false,
                     type: `${process.env.NEXT_PUBLIC_T_TEXTSET}`
                 }
+        }
+        
+    },
+    "game": async (commands, props) => {
+        props = await JSON.parse(props)
+
+        let linklist = {
+            "lock": "/toothpickman",
+            "cards": "/fivecentcasino",
+            "atlas": "/bizarreadvents",
+            "notes": "/earsastheeye",
+            "orbits": "/onefortwoback",
+        }
+        
+        if (commands[1] in linklist){
+            return {
+                data :  `${process.env.NEXT_PUBLIC_T_C_REDIRECT}`,
+                data2: linklist[commands[1]],
+                permanent: false,
+                type:  `${process.env.NEXT_PUBLIC_T_COMMAND}`
+            }
+        }
+        else{
+            return {
+                data: [
+                    "Game Code Error",
+                ],
+                permanent: false,
+                type: `${process.env.NEXT_PUBLIC_T_TEXTSET}`
+            }
         }
         
     },
@@ -73,6 +111,8 @@ const commands = {
     },
     "move": async (commands, props) => {
         props = await JSON.parse(props)
+        let player = props.player
+
         switch(commands[1]){
             case "..":
                 props.current_path = props.current_path.split("/")
@@ -81,7 +121,7 @@ const commands = {
                 return {
                     data : `${process.env.NEXT_PUBLIC_T_C_MOVE}`,
                     props,
-                    data2: getDirectory(props.current_path),
+                    data2: getDirectory(props.current_path, player),
                     permanent: false,
                     type: `${process.env.NEXT_PUBLIC_T_COMMAND}`
                 }
@@ -89,14 +129,14 @@ const commands = {
                 return {
                     data :  `${process.env.NEXT_PUBLIC_T_C_MOVE}`,
                     props,
-                    data2: getDirectory("/"),
+                    data2: getDirectory("/", player),
                     permanent: false,
                     type: `${process.env.NEXT_PUBLIC_T_COMMAND}`
                 }
         }
         let p_loc = `${props.current_path}${commands[1] ? `/${commands[1]}` : ''}`
         //console.log(p_loc)
-        let dir = getDirectory(p_loc)
+        let dir = getDirectory(p_loc, player)
         return {
             data :  `${process.env.NEXT_PUBLIC_T_C_MOVE}`,
             data2: dir,
@@ -213,6 +253,15 @@ const commands = {
         totalP += player.e2_orli ? 1 : 0
         totalP += player.e2_wotwil ? 1 : 0
 
+        let hash = cryptoJs.SHA256(JSON.stringify({
+            ttpk : player.e2_ttpkmn,
+            sfcd : player.e2_sfcd,
+            mgln : player.e2_magellan,
+            ntps : player.e2_ntpass,
+            orll : player.e2_orli,
+            wtwl : player.e2_wotwil,
+        }))
+
         switch(props.status){
             default:
                 return {
@@ -227,6 +276,8 @@ const commands = {
                         `<code style="${player.e2_ntpass ?  'color: #353839">Done' : 'color: white">....'}</code> - Note Password`,
                         `<code style="${player.e2_orli ?    'color: #ff7373">Done' : 'color: white">....'}</code> - Orbitals`,
                         `<code style="${player.e2_wotwil ?'color: #16537e">Done' : 'color: white">....'}</code> - Crypted`,
+                        "<br/><br/>",
+                        `<code>Progress Hash</code> - ${hash}`,
                         "<br/><br/>",
                         (totalP == 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro with this picture, send a wink and wait patiently." : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
                         "<br/>===============================<br/><br/>",

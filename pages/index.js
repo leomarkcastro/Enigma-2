@@ -10,6 +10,7 @@ import soundList from '../data/sounds'
 import _initSecSore from '../data/ews'
 import cryptoJs from 'crypto-js'
 import { useRouter } from 'next/router'
+import {check_start_date, start_date} from '../data/gamestart'
 
 let introText = [
   "<span class='yellow'>ICPEP.SE BulSU Chapter</span>",
@@ -77,6 +78,8 @@ export default function Home() {
     (async function () {
       let loaded = locSecStore.getItem("e2_firstLoad")
 
+      let gameStart = check_start_date()
+
       if (!loaded){
         for(let l in introText){
           await wait(10);
@@ -86,11 +89,21 @@ export default function Home() {
         await wait(1000);
         await Writer.write("<br/>");
         await wait(1000);
-        await Writer.write("Successfully Connected To the Database");
-        await Writer.write("");
-        await Writer.write("<br/>");
-        locSecStore.setItem("e2_status", "000")
-        locSecStore.setItem("e2_firstLoad", true)
+        if (gameStart) {
+          await Writer.write("Successfully Connected To the Database");
+          await Writer.write("");
+          await Writer.write("<br/>");
+          locSecStore.setItem("e2_status", "000")
+          locSecStore.setItem("e2_firstLoad", true)
+        }
+        else{
+          await Writer.write("Database connection <span class='text-red-600'>ERROR</span>");
+          await Writer.write(`Connection will open <span class='text-yellow-600'>${start_date}</span>`);
+          await Writer.write("");
+          await Writer.write("<br/>");
+
+        }
+        
       }
       else{
         for(let l in introText){
@@ -102,12 +115,15 @@ export default function Home() {
         logString("<br/>");
       }
       
-      await Writer.write("Terminal Now Open. Please Enter Your Command");
-      await Writer.write(`Else type "help" to see list of commands`);
-      await Writer.write(``);
-      await Writer.write(`<br/>`);
-      await Writer.write(``);
-      setInpActive(true)
+      if (gameStart){
+        await Writer.write("Terminal Now Open. Please Enter Your Command");
+        await Writer.write(`Else type "help" to see list of commands`);
+        await Writer.write(``);
+        await Writer.write(`<br/>`);
+        await Writer.write(``);
+        setInpActive(true)
+      }
+      
     })();
   }
 
@@ -154,7 +170,7 @@ export default function Home() {
   const processCom = async (comm) => {
     try{
       let result = await fetchCommand(comm)
-      console.log(result)
+      //console.log(result)
       //console.log(result)
       switch(result.type.split("_")[0]){
         case process.env.NEXT_PUBLIC_T_TEXTSET:
@@ -211,7 +227,7 @@ export default function Home() {
               break;
 
             case process.env.NEXT_PUBLIC_T_C_REDIRECT:
-              console.log(result)
+              //console.log(result)
               router.push(result.data2)
               break;
           }
@@ -254,7 +270,7 @@ export default function Home() {
 
     }
     catch(e){
-      console.error(e)
+      //console.error(e)
     }
     
     setInp("")

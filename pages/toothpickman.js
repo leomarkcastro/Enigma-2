@@ -86,6 +86,9 @@ export default function LockPick() {
 
   function loadStart(){
     let dat = locSecStore.getItem("e2_player")
+    if (! dat.e2_s_ttpkmn ){
+      locSecStore.setItem("e2_player", {...dat, e2_s_ttpkmn: true})
+    }
     if (dat.e2_ttpkmn == true){
       setFinish(true)
     }

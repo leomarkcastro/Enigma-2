@@ -1,9 +1,17 @@
 import cryptoJs from "crypto-js";
 import commands from "../../../data/commands"
+import {check_start_date} from "../../../data/gamestart";
 
 export default async function handler(req, res) {
     let { com } = req.query
     com = com.replace(/~/g, '/')
+
+    if (!check_start_date()) return res.status(200).json({data: [
+        `<span class="red">Server Database Error</span>`,
+        `<span class="red">Database not Open</span>`,
+        "<br/>"
+    ], permanent: true, command:com, success:false, type:process.env.NEXT_PUBLIC_T_TEXTSET})
+
     if (req.method === 'POST') {
         let com_parse = com.split(" ")
         if (com_parse[0] in commands){
