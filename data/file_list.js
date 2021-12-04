@@ -97,6 +97,16 @@ const root = directory(
                     "It only activates 3 adjacent orbs per click. Good luck!.<br/><br/>"
                 ]),
             }),
+            ...directory('60_min_misery', true, {
+                ...file("url_to_game.txt", true, [
+                    "60 Minute Misery <br/><br/>",
+                    "The link to the game is <a class='text-green-500' href='/tricklegamble'>this</a>. This will redirect you to the game<br/><br/>"
+                ]),
+                ...file("how_to_play.txt", true, [
+                    "Wait for the 60 mins counter to turn to 0.<br/><br/>",
+                    "Deals will come on you while you were waiting, showing ways to increase/decrease your wait time.<br/><br/>"
+                ]),
+            }),
             ...directory('8e6s23as5f', true, {
                 ...file("url_to_game.txt", true, [
                     "Crypted <br/><br/>",

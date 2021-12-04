@@ -45,6 +45,8 @@ const commands = {
             default:
                 return {
                     data: [
+                        "<br/>",
+                        "========================================",
                         "tulong - Ilista lahat ng mga utos na pwedeng gawin",
                         "<br/>",
                         player.eukabsms_ttpkmn ? "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>" : '',
@@ -54,9 +56,9 @@ const commands = {
                         player.eukabsms_orli ? "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>" : '',
                         player.eukabsms_orli ? "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>" : '',
                         "<br/>",
-                        "<code class='text-blue-400'>panalo</code> - Shows the receipt of your progress in the game</code>",
+                        "<code class='text-blue-400'>panalo</code> - Ipakita ang iyong katayuan ngayon sa laro</code>",
                         "<br/>",
-                        "<code class='text-yellow-400'>lns</code> - Linising ang lugar",
+                        "<code class='text-yellow-400'>lns</code> - Linisin ang lugar",
                         "<code class='text-yellow-400'>lugar</code> - Sabihin kung nasaang folder ka na",
                         "<code class='text-yellow-400'>lam</code> - Ilista ang laman ng folder",
                         "<code class='text-yellow-400'>lam &lt;lokasyon&gt;</code> - Ilista ang laman ng folder base sa binigay na lokasyon",
@@ -283,9 +285,10 @@ const commands = {
                         `<code style="${player.eukabsmwotwil ?'color: #16537e">Done' : 'color: white">....'}</code> - Crypted`,
                         `<code style="${player.eukabsmtlgb ?'color: #8f0536">Done' : 'color: white">....'}</code> - 30 Min Misery`,
                         "<br/><br/>",
+                        `<code>Player</code> - [${player.eukabsmname}]`,
                         `<code>Progress Hash</code> - ${hash}`,
                         "<br/><br/>",
-                        (totalP >= 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro with this picture, send a wink and wait patiently." : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
+                        (totalP >= 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro [CpE . Member of ICPEP BSU] with this picture, send a wink and wait patiently. You only need to solve 6 problems to be considered a winner" : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
                         "<br/>===============================<br/><br/>",
                     ],
                     permanent: false,

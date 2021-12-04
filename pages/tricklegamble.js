@@ -8,7 +8,7 @@ import IntroCard from "../components/introcard";
 
 let locSecStore;
 let nextOffer = 30
-let time = 5
+let time = 60*60
 let offer = false
 
 export default function Orbs() {
@@ -129,7 +129,9 @@ export default function Orbs() {
         <div className="flex flex-col justify-center items-center w-screen h-screen">
           {finish && <GameFinished />}
           <div className="h-screen flex flex-col justify-center items-center">
-            <p className={`text-9xl mb-10 ${isLegit ? "text-blue-400" : "text-red-400"}`}>{tim}</p>
+            <p className={`text-9xl mb-10 ${isLegit ? "text-blue-400" : "text-red-400"}`}>
+              {Math.floor(tim/3600)}<span className="text-xl">hrs</span> {Math.floor(tim/60)%60}<span className="text-xl">mins</span> {tim%60}<span className="text-xl">secs</span>
+            </p>
             <p>It is simple, you just have to keep this window open for 60 minutes! You can do anything else!</p>
             { !isLegit && <p className="mt-5 text-red-400">Counter broken because you lost focus on page</p> }
             {
