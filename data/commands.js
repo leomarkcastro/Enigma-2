@@ -38,32 +38,33 @@ const commands = {
     
     ...easter,
     
-    "help" : async (commands, props) => {
+    "tulong" : async (commands, props) => {
         props = await JSON.parse(props)
         let player = props.player
         switch(props.status){
             default:
                 return {
                     data: [
-                        "help - Commands",,
+                        "tulong - Ilista lahat ng mga utos na pwedeng gawin",
                         "<br/>",
-                        player.e2_s_ttpkmn ? "<code class='text-purple-400'>game lock</code> - Redirects you to website to play the pick lock game</code>" : '',
-                        player.e2_s_sfcd ? "<code class='text-purple-400'>game cards</code> - Redirects you to website to play the card shuffling game</code>" : '',
-                        player.e2_s_magellan ? "<code class='text-purple-400'>game atlas</code> - Redirects you to website to play the atlas adventurer game</code>" : '',
-                        player.e2_s_ntpass ? "<code class='text-purple-400'>game notes</code> - Redirects you to website to play the note picking game</code>" : '',
-                        player.e2_s_orli ? "<code class='text-purple-400'>game orbits</code> - Redirects you to website to play the orbital puzzle game</code>" : '',
+                        player.e2_s_ttpkmn ? "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>" : '',
+                        player.e2_s_sfcd ? "<code class='text-purple-400'>laro cards</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>" : '',
+                        player.e2_s_magellan ? "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>" : '',
+                        player.e2_s_ntpass ? "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>" : '',
+                        player.e2_s_orli ? "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>" : '',
+                        player.e2_s_orli ? "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>" : '',
                         "<br/>",
-                        "<code class='text-blue-400'>progress</code> - Shows the receipt of your progress in the game</code>",
+                        "<code class='text-blue-400'>panalo</code> - Shows the receipt of your progress in the game</code>",
                         "<br/>",
-                        "<code class='text-yellow-400'>cls</code> - Clears Screen",
-                        "<code class='text-yellow-400'>path</code> - Shows your current directory path",
-                        "<code class='text-yellow-400'>dir</code> - Shows Files and Directory in the current directory",
-                        "<code class='text-yellow-400'>dir &lt;location&gt;</code> - Shows Files and Directory in the given directory address",
-                        "<code class='text-yellow-400'>move &lt;location&gt;</code> -   Moves to a child subdirectory",
-                        "<code class='text-yellow-400'>move ..</code> - Moves up to from the directory parent",
-                        "<code class='text-yellow-400'>move /</code> - Moves you back to the root directory",
-                        "<code class='text-yellow-400'>read &lt;file&gt;</code> - Reads the specified file in the current directory",
-                        "<code class='text-green-400'>glory_me</code> - Shows motivational message <code class='text-green-500'>in case you dont know what to do</code>",
+                        "<code class='text-yellow-400'>lns</code> - Linising ang lugar",
+                        "<code class='text-yellow-400'>lugar</code> - Sabihin kung nasaang folder ka na",
+                        "<code class='text-yellow-400'>lam</code> - Ilista ang laman ng folder",
+                        "<code class='text-yellow-400'>lam &lt;lokasyon&gt;</code> - Ilista ang laman ng folder base sa binigay na lokasyon",
+                        "<code class='text-yellow-400'>gal &lt;lokasyon&gt;</code> - Lumipat ng lugar patungo sa binigay na lokasyon",
+                        "<code class='text-yellow-400'>gal ..</code> - Humakbang pabalik mula sa iyong lokasyon",
+                        "<code class='text-yellow-400'>gal /</code> - Bumalik sa pinagmulang lokasyon",
+                        "<code class='text-yellow-400'>basa &lt;lokasyon&gt;</code> - Basahin ang isang file base sa binigay na lokasyon",
+                        "<code class='text-green-400'>mabuhay</code> - Magpakita ng nakakatulong na salita <code class='text-green-500'>kung sakaling di mo na alam ang gagawin</code>",
                         "<br/>",
                     ],
                     permanent: false,
@@ -72,7 +73,7 @@ const commands = {
         }
         
     },
-    "game": async (commands, props) => {
+    "laro": async (commands, props) => {
         props = await JSON.parse(props)
 
         let linklist = {
@@ -81,6 +82,7 @@ const commands = {
             "atlas": "/bizarreadvents",
             "notes": "/earsastheeye",
             "orbits": "/onefortwoback",
+            "30min": "/tricklegamble",
         }
         
         if (commands[1] in linklist){
@@ -102,14 +104,14 @@ const commands = {
         }
         
     },
-    "cls": async (commands, props) => {
+    "lns": async (commands, props) => {
         return {
             data : `${process.env.NEXT_PUBLIC_T_C_CLEAR}`,
             permanent: true,
             type: `${process.env.NEXT_PUBLIC_T_COMMAND}`
         }
     },
-    "move": async (commands, props) => {
+    "gal": async (commands, props) => {
         props = await JSON.parse(props)
         let player = props.player
 
@@ -144,7 +146,7 @@ const commands = {
             type:  `${process.env.NEXT_PUBLIC_T_COMMAND}`
         }
     },
-    "dir": async (commands, props) => {
+    "lam": async (commands, props) => {
         props = await JSON.parse(props)
         let p_loc = `${props.current_path}${commands[1] ? `/${commands[1]}` : ''}`
         //console.log(p_loc)
@@ -156,7 +158,7 @@ const commands = {
             type:  `${process.env.NEXT_PUBLIC_T_COMMAND}`
         }
     },
-    "path": async (commands, props) => {
+    "lugar": async (commands, props) => {
         props = await JSON.parse(props)
         //let p_loc = `${props.current_path}${commands[1] ? `/${commands[1]}` : ''}`
         //console.log(p_loc)
@@ -168,7 +170,7 @@ const commands = {
             type:  `${process.env.NEXT_PUBLIC_T_COMMAND}`
         }
     },
-    "read": async (commands, props) => {
+    "basa": async (commands, props) => {
         props = await JSON.parse(props)      
         let up_player = false;  
         let p_loc = `${props.current_path}${commands[1] ? `/${commands[1]}` : ''}`
@@ -216,7 +218,7 @@ const commands = {
             type: `${process.env.NEXT_PUBLIC_T_TEXTSET}_${process.env.NEXT_PUBLIC_PX_PROGRESS}`
         }
     },
-    "glory_me" : async (commands, props) => {
+    "mabuhay" : async (commands, props) => {
         //props = await JSON.parse(props)
       
         return {
@@ -231,7 +233,7 @@ const commands = {
         
     },
 
-    "progress" : async (commands, props) => {
+    "panalo" : async (commands, props) => {
         props = await JSON.parse(props)
         let player = props.player
         
@@ -252,14 +254,17 @@ const commands = {
         totalP += player.e2_ntpass ? 1 : 0
         totalP += player.e2_orli ? 1 : 0
         totalP += player.e2_wotwil ? 1 : 0
+        totalP += player.e2_tlgb ? 1 : 0
 
         let hash = cryptoJs.SHA256(JSON.stringify({
+            plar : player.e2_name,
             ttpk : player.e2_ttpkmn,
             sfcd : player.e2_sfcd,
             mgln : player.e2_magellan,
             ntps : player.e2_ntpass,
             orll : player.e2_orli,
             wtwl : player.e2_wotwil,
+            tlgm : player.e2_tlgb,
         }))
 
         switch(props.status){
@@ -276,10 +281,11 @@ const commands = {
                         `<code style="${player.e2_ntpass ?  'color: #353839">Done' : 'color: white">....'}</code> - Note Password`,
                         `<code style="${player.e2_orli ?    'color: #ff7373">Done' : 'color: white">....'}</code> - Orbitals`,
                         `<code style="${player.e2_wotwil ?'color: #16537e">Done' : 'color: white">....'}</code> - Crypted`,
+                        `<code style="${player.e2_tlgb ?'color: #8f0536">Done' : 'color: white">....'}</code> - 30 Min Misery`,
                         "<br/><br/>",
                         `<code>Progress Hash</code> - ${hash}`,
                         "<br/><br/>",
-                        (totalP == 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro with this picture, send a wink and wait patiently." : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
+                        (totalP >= 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro with this picture, send a wink and wait patiently." : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
                         "<br/>===============================<br/><br/>",
                     ],
                     permanent: false,

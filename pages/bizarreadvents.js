@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import uuid from 'uuid/v4'
 
+import Head from "next/head"
+
 import GlitchedWriter, { wait } from 'glitched-writer'
 
 import herring from "../data/herring";
@@ -8,6 +10,8 @@ import _initSecSore from '../data/ews'
 import { GameFinished } from "../components/finished";
 import soundList from "../data/sounds";
 import cryptoJs from "crypto-js";
+import IntroCard from "../components/introcard";
+import next from "next";
 let locSecStore;
 
 let locs;
@@ -62,6 +66,7 @@ export default function Explorer() {
   const [mapVal, setMapVal] = useState("https://www.google.com/maps/embed?pb=!4v1637665725902!6m8!1m7!1sMxyrE8hrOxx7QcF0UYRtOQ!2m2!1d35.90951380009945!2d14.42602479259856!3f91.97630884731788!4f-5.022382564031389!5f0.7820865974627469")
   const [totalScore, setTotalScore] = useState(0)
   const [gameLoaded, setGameLoaded] = useState(false)
+  const [showSplash, setShowSplash] = useState(true);
   
   let sys_push = cryptoJs.AES.decrypt
   const [finish, setFinish] = useState(false);
@@ -116,26 +121,45 @@ export default function Explorer() {
   }
 
   useEffect(() => {
+
+  }, [])
+
+  function continueSplash() {
     fetchAnswers()
 
     init_store()
     loadStart()
-
-  }, [])
+    setShowSplash(false);
+  }
 
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen">
-      {finish && <GameFinished />}
-      {
-        gameLoaded ?
-        <>
-          <iframe src={mapVal} width="800" height="500" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
-          <GiveMe setMapVal={setMap} />
-        </>
-        :
-        <p>Game Loading</p>
-      }
-      
-    </div>
-  );
+    <>
+      <Head>
+          <title>Enigma 2 - Atlas Adventure</title>
+          <meta name="description" content="Enigma 2 - Atlas Adventure Challenge" />
+          <link rel="icon" href="/favicon.ico" />
+      </Head>
+      {showSplash ? (
+        <IntroCard
+          title="<span class='text-green-400'>Atlas</span> Adventurer"
+          comment="Clues hiding in plain sight, or just stupidly described description making things a lot harder"
+          proceedFunction={continueSplash}
+        />
+      ) : (
+        <div className="flex flex-col justify-center items-center w-screen h-screen">
+          {finish && <GameFinished />}
+          {
+            gameLoaded ?
+            <>
+              <iframe src={mapVal} width="800" height="500" style={{border:0}} allowFullScreen="" loading="lazy"></iframe>
+              <GiveMe setMapVal={setMap} />
+            </>
+            :
+            <p>Game Loading</p>
+          }
+          
+        </div>
+      )}
+    </>
+  )
 }

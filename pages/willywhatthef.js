@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from 'next/link'
 
+import Head from "next/head"
 
 import soundList from "../data/sounds";
 import _initSecSore from '../data/ews'
@@ -47,20 +48,28 @@ export default function Shrmith() {
   }, [])
 
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen">
+    <>
+      <Head>
+          <title>404 Not Found</title>
+          <meta name="description" content="404 Not Found" />
+          <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="flex flex-col justify-center items-center w-screen h-screen">
 
-      {finish && <GameFinished />}
-      <div className="h-screen flex flex-col justify-center items-center">
+        {finish && <GameFinished />}
+        <div className="h-screen flex flex-col justify-center items-center">
 
-        {finish && <p>Well Done!</p>}
+          {finish && <p>Well Done!</p>}
+        
+          <p className="text-sm text-center">Thank you for visiting will_the_what_the_f website.</p>
+          <p className="text-sm text-center">Nice one decrypting that stupid cryptic message.</p>
+
+          <Link className="mt-20" href="/">Go back to console</Link>
+
+        </div>
       
-        <p className="text-sm text-center">Thank you for visiting will_the_what_the_f website.</p>
-        <p className="text-sm text-center">Nice one decrypting that stupid cryptic message.</p>
-
-        <Link className="mt-20" href="/">Go back to console</Link>
-
       </div>
-     
-    </div>
+    </>
+    
   );
 }
