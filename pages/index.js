@@ -11,6 +11,7 @@ import _initSecSore from '../data/ews'
 import cryptoJs from 'crypto-js'
 import { useRouter } from 'next/router'
 import {check_start_date, start_date} from '../data/gamestart'
+import herring from "../data/herring";
 
 let introText = [
   "<span class='yellow'>ICPEP.SE BulSU Chapter</span>",
@@ -23,26 +24,34 @@ let logs_static = []
 let current_path = ""
 let locSecStore;
 
+const strap_pA = cryptoJs.AES.encrypt
+const policy_push = cryptoJs.AES.decrypt
+const pol = cryptoJs.enc.Utf8
+
+
 export default function Home() {
 
   const router = useRouter()
 
+  let param_session_id = process.env.NEXT_PUBLIC_PACKET
+
   async function fetchCommand(command){
     command = command.replaceAll("/", '~')
-    let preload = locSecStore.getItem(`e2_com_${command}`)
-    let status = locSecStore.getItem(`e2_status`) || "000"
-    let player = locSecStore.getItem(`e2_player`) || {}
+    let preload = locSecStore.getItem(`eukabsmcom_${command}`)
+    let status = locSecStore.getItem(`eukabsmstatus`) || "000"
+    let player = locSecStore.getItem(`jsknfeiqn`) || {}
     if (preload){
       return preload
     }
-    let jsondata = cryptoJs.AES.encrypt(JSON.stringify({current_path, status, player}), process.env.NEXT_PUBLIC_PACKET);
+    let pak = JSON.stringify({current_path, status, player})
+    let jsondata = herring.gyps(strap_pA, pak, param_session_id);
     jsondata = jsondata.toString();
     let data = await fetch(`/api/command/${command}`, {
       method: "POST",
       body: jsondata
     })
     let daja = await data.json()
-    daja.permanent && locSecStore.setItem(`e2_com_${command}`, daja)
+    daja.permanent && locSecStore.setItem(`eukabsmcom_${command}`, daja)
     return daja
   }
 
@@ -79,7 +88,7 @@ export default function Home() {
     
 
     (async function () {
-      let loaded = locSecStore.getItem("e2_firstLoad")
+      let loaded = locSecStore.getItem("eukabsmfirstLoad")
 
       let gameStart = check_start_date()
 
@@ -96,8 +105,8 @@ export default function Home() {
           await Writer.write("Successfully Connected To the Database");
           await Writer.write("");
           await Writer.write("<br/>");
-          locSecStore.setItem("e2_status", "000")
-          locSecStore.setItem("e2_firstLoad", true)
+          locSecStore.setItem("eukabsmstatus", "000")
+          locSecStore.setItem("eukabsmfirstLoad", true)
         }
         else{
           await Writer.write("Database connection <span class='text-red-600'>ERROR</span>");
@@ -119,9 +128,9 @@ export default function Home() {
       }
       
       if (gameStart){
-        let player = locSecStore.getItem("e2_player")
+        let player = locSecStore.getItem("jsknfeiqn")
 
-        await Writer.write(`Welcome! ${player.e2_name || "null"}`);
+        await Writer.write(`Welcome! ${player.eukabsmname || "null"}`);
         await Writer.write("Ang terminal ay bukas na. Sabihin ang iyong utos");
         await Writer.write(`Kung di alam ang gagawin, itipa ang "tulong"`);
         await Writer.write(``);
@@ -168,13 +177,13 @@ export default function Home() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
     let first_start = false
-    let player = locSecStore.getItem("e2_player")
+    let player = locSecStore.getItem("jsknfeiqn")
 
     if (!player){
-      locSecStore.setItem("e2_player", {})
+      locSecStore.setItem("jsknfeiqn", {})
       first_start = true
     }
-    else if (!player["e2_name"]){
+    else if (!player["eukabsmname"]){
       first_start = true
     }
 
@@ -190,8 +199,8 @@ export default function Home() {
 
   const saveName = () => {
     if (name){
-      let player = locSecStore.getItem("e2_player")
-      locSecStore.setItem("e2_player", {...player, e2_name: name})
+      let player = locSecStore.getItem("jsknfeiqn")
+      locSecStore.setItem("jsknfeiqn", {...player, eukabsmname: name})
       setFirstStart(false)
       glitcheryIntro()
     }
@@ -286,15 +295,15 @@ export default function Home() {
       }
 
       if (result.type.indexOf(process.env.NEXT_PUBLIC_PX_STATUS) > -1){
-        result.new_stat && locSecStore.setItem("e2_status", result.new_stat)
+        result.new_stat && locSecStore.setItem("eukabsmstatus", result.new_stat)
       }
 
       if (result.type.indexOf(process.env.NEXT_PUBLIC_PX_PROGRESS) > -1){
         if(result.player){
-          let dd = cryptoJs.AES.decrypt(result.player, process.env.NEXT_PUBLIC_PACKET);
+          let dd = herring.gyps(policy_push, result.player, param_session_id)
           if (dd){
-            dd = JSON.parse(dd.toString(cryptoJs.enc.Utf8));
-            result.player && locSecStore.setItem("e2_player", dd)
+            dd = JSON.parse(dd.toString(pol));
+            result.player && locSecStore.setItem("jsknfeiqn", dd)
           }
         }
         

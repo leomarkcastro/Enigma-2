@@ -82,17 +82,17 @@ export default function LockPick() {
     //console.log(process)
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY);
 
-    if (!locSecStore.getItem("e2_player")) {
-      locSecStore.setItem("e2_player", {});
+    if (!locSecStore.getItem("jsknfeiqn")) {
+      locSecStore.setItem("jsknfeiqn", {});
     }
   }
 
   function loadStart() {
-    let dat = locSecStore.getItem("e2_player");
-    if (!dat.e2_s_ttpkmn) {
-      locSecStore.setItem("e2_player", { ...dat, e2_s_ttpkmn: true });
+    let dat = locSecStore.getItem("jsknfeiqn");
+    if (!dat.eukabsms_ttpkmn) {
+      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsms_ttpkmn: true });
     }
-    if (dat.e2_ttpkmn == true) {
+    if (dat.eukabsmttpkmn == true) {
       setFinish(true);
     }
   }
@@ -111,8 +111,8 @@ export default function LockPick() {
     if (points == targetPoints) {
       soundList.l_success.play();
       setFinish(true);
-      let dat = locSecStore.getItem("e2_player");
-      locSecStore.setItem("e2_player", { ...dat, e2_ttpkmn: true });
+      let dat = locSecStore.getItem("jsknfeiqn");
+      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsmttpkmn: true });
     }
   }, [points]);
 

@@ -47,12 +47,12 @@ const commands = {
                     data: [
                         "tulong - Ilista lahat ng mga utos na pwedeng gawin",
                         "<br/>",
-                        player.e2_s_ttpkmn ? "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>" : '',
-                        player.e2_s_sfcd ? "<code class='text-purple-400'>laro cards</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>" : '',
-                        player.e2_s_magellan ? "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>" : '',
-                        player.e2_s_ntpass ? "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>" : '',
-                        player.e2_s_orli ? "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>" : '',
-                        player.e2_s_orli ? "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>" : '',
+                        player.eukabsms_ttpkmn ? "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>" : '',
+                        player.eukabsms_sfcd ? "<code class='text-purple-400'>laro cards</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>" : '',
+                        player.eukabsms_magellan ? "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>" : '',
+                        player.eukabsms_ntpass ? "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>" : '',
+                        player.eukabsms_orli ? "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>" : '',
+                        player.eukabsms_orli ? "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>" : '',
                         "<br/>",
                         "<code class='text-blue-400'>panalo</code> - Shows the receipt of your progress in the game</code>",
                         "<br/>",
@@ -248,23 +248,23 @@ const commands = {
         }
 
         let totalP = 0
-        totalP += player.e2_ttpkmn ? 1 : 0
-        totalP += player.e2_sfcd ? 1 : 0
-        totalP += player.e2_magellan ? 1 : 0
-        totalP += player.e2_ntpass ? 1 : 0
-        totalP += player.e2_orli ? 1 : 0
-        totalP += player.e2_wotwil ? 1 : 0
-        totalP += player.e2_tlgb ? 1 : 0
+        totalP += player.eukabsmttpkmn ? 1 : 0
+        totalP += player.eukabsmsfcd ? 1 : 0
+        totalP += player.eukabsmmagellan ? 1 : 0
+        totalP += player.eukabsmntpass ? 1 : 0
+        totalP += player.eukabsmorli ? 1 : 0
+        totalP += player.eukabsmwotwil ? 1 : 0
+        totalP += player.eukabsmtlgb ? 1 : 0
 
         let hash = cryptoJs.SHA256(JSON.stringify({
-            plar : player.e2_name,
-            ttpk : player.e2_ttpkmn,
-            sfcd : player.e2_sfcd,
-            mgln : player.e2_magellan,
-            ntps : player.e2_ntpass,
-            orll : player.e2_orli,
-            wtwl : player.e2_wotwil,
-            tlgm : player.e2_tlgb,
+            plar : player.eukabsmname,
+            ttpk : player.eukabsmttpkmn,
+            sfcd : player.eukabsmsfcd,
+            mgln : player.eukabsmmagellan,
+            ntps : player.eukabsmntpass,
+            orll : player.eukabsmorli,
+            wtwl : player.eukabsmwotwil,
+            tlgm : player.eukabsmtlgb,
         }))
 
         switch(props.status){
@@ -275,13 +275,13 @@ const commands = {
                         "<br/>",
                         "Game Progress",
                         "<br/>",
-                        `<code style="${player.e2_ttpkmn ?  'color: #a64d79">Done' : 'color: white">....'}</code> - Pick Lock `,
-                        `<code style="${player.e2_sfcd ?    'color: #d2afff">Done' : 'color: white">....'}</code> - Cards Shuffle`,
-                        `<code style="${player.e2_magellan ?'color: #dfa98f">Done' : 'color: white">....'}</code> - Atlas Venture`,
-                        `<code style="${player.e2_ntpass ?  'color: #353839">Done' : 'color: white">....'}</code> - Note Password`,
-                        `<code style="${player.e2_orli ?    'color: #ff7373">Done' : 'color: white">....'}</code> - Orbitals`,
-                        `<code style="${player.e2_wotwil ?'color: #16537e">Done' : 'color: white">....'}</code> - Crypted`,
-                        `<code style="${player.e2_tlgb ?'color: #8f0536">Done' : 'color: white">....'}</code> - 30 Min Misery`,
+                        `<code style="${player.eukabsmttpkmn ?  'color: #a64d79">Done' : 'color: white">....'}</code> - Pick Lock `,
+                        `<code style="${player.eukabsmsfcd ?    'color: #d2afff">Done' : 'color: white">....'}</code> - Cards Shuffle`,
+                        `<code style="${player.eukabsmmagellan ?'color: #dfa98f">Done' : 'color: white">....'}</code> - Atlas Venture`,
+                        `<code style="${player.eukabsmntpass ?  'color: #353839">Done' : 'color: white">....'}</code> - Note Password`,
+                        `<code style="${player.eukabsmorli ?    'color: #ff7373">Done' : 'color: white">....'}</code> - Orbitals`,
+                        `<code style="${player.eukabsmwotwil ?'color: #16537e">Done' : 'color: white">....'}</code> - Crypted`,
+                        `<code style="${player.eukabsmtlgb ?'color: #8f0536">Done' : 'color: white">....'}</code> - 30 Min Misery`,
                         "<br/><br/>",
                         `<code>Progress Hash</code> - ${hash}`,
                         "<br/><br/>",

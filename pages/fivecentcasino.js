@@ -203,19 +203,19 @@ export default function Shuffler() {
     //console.log(process)
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY);
 
-    if (!locSecStore.getItem("e2_player")) {
-      locSecStore.setItem("e2_player", {});
+    if (!locSecStore.getItem("jsknfeiqn")) {
+      locSecStore.setItem("jsknfeiqn", {});
     }
   }
 
   function loadStart() {
-    let dat = locSecStore.getItem("e2_player");
+    let dat = locSecStore.getItem("jsknfeiqn");
 
-    if (!dat.e2_s_sfcd) {
-      locSecStore.setItem("e2_player", { ...dat, e2_s_sfcd: true });
+    if (!dat.eukabsms_sfcd) {
+      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsms_sfcd: true });
     }
 
-    if (dat.e2_sfcd == true) {
+    if (dat.eukabsmsfcd == true) {
       setFinish(true);
     }
   }
@@ -224,8 +224,8 @@ export default function Shuffler() {
     if (totalScore == targetPoints) {
       soundList.l_success.play();
       setFinish(true);
-      let dat = locSecStore.getItem("e2_player");
-      locSecStore.setItem("e2_player", { ...dat, e2_sfcd: true });
+      let dat = locSecStore.getItem("jsknfeiqn");
+      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsmsfcd: true });
     }
   }, [totalScore]);
 

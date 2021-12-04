@@ -181,17 +181,17 @@ export default function NotePass() {
     //console.log(process)
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY);
 
-    if (!locSecStore.getItem("e2_player")) {
-      locSecStore.setItem("e2_player", {});
+    if (!locSecStore.getItem("jsknfeiqn")) {
+      locSecStore.setItem("jsknfeiqn", {});
     }
   }
 
   function loadStart() {
-    let dat = locSecStore.getItem("e2_player");
-    if (!dat.e2_s_ntpass) {
-      locSecStore.setItem("e2_player", { ...dat, e2_s_ntpass: true });
+    let dat = locSecStore.getItem("jsknfeiqn");
+    if (!dat.eukabsms_ntpass) {
+      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsms_ntpass: true });
     }
-    if (dat.e2_ntpass == true) {
+    if (dat.eukabsmntpass == true) {
       setFinish(true);
     }
   }
@@ -200,8 +200,8 @@ export default function NotePass() {
     if (totalScore == targetPoints) {
       soundList.l_success.play();
       setFinish(true);
-      let dat = locSecStore.getItem("e2_player");
-      locSecStore.setItem("e2_player", { ...dat, e2_ntpass: true });
+      let dat = locSecStore.getItem("jsknfeiqn");
+      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsmntpass: true });
     }
   }, [totalScore]);
 
