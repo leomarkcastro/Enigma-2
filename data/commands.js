@@ -24,7 +24,7 @@ const easter = {
             type: `${process.env.NEXT_PUBLIC_T_C_JUMPSCARE}_${process.env.NEXT_PUBLIC_PX_STATUS}`
         }
     },
-    "badaboop": async (status) => {
+    "badabop": async (status) => {
         return {
             data : `<img src="https://i.imgflip.com/589eui.jpg" width="500" class="jumpScare"/>`,
             permanent: false,
