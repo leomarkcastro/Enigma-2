@@ -156,22 +156,19 @@ export default function Shuffler() {
     setTimeout(() => {
       levelInc += 1;
       levelInc %= 4;
-      if (levelInc == 0 && boxHC >= 6) {
-        levelInc = 1;
-      }
       if (right) {
         switch (levelInc) {
           case 0:
-            gameStart(boxWC, boxHC + 2, shuffleC);
+            gameStart(boxWC, Math.min(boxHC+2,4), shuffleC);
             break;
           case 1:
-            gameStart(boxWC + 2, boxHC, shuffleC);
+            gameStart(Math.min(boxWC+2,8), boxHC, shuffleC);
             break;
           case 2:
             gameStart(boxWC, boxHC, shuffleC + 2);
             break;
           case 3:
-            gameStart(boxWC + 2, boxHC, shuffleC + 2);
+            gameStart(Math.min(boxWC+2,8), Math.min(boxHC+2,4), shuffleC + 2);
             break;
         }
       } else {

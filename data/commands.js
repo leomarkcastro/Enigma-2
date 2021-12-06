@@ -49,14 +49,16 @@ const commands = {
                         "========================================",
                         "tulong - Ilista lahat ng mga utos na pwedeng gawin",
                         "<br/>",
-                        player.eukabsms_ttpkmn ? "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>" : '',
-                        player.eukabsms_sfcd ? "<code class='text-purple-400'>laro cards</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>" : '',
-                        player.eukabsms_magellan ? "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>" : '',
-                        player.eukabsms_ntpass ? "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>" : '',
-                        player.eukabsms_orli ? "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>" : '',
-                        player.eukabsms_orli ? "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>" : '',
+                        "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>",
+                        "<code class='text-purple-400'>laro cards</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>",
+                        "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>",
+                        "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>",
+                        "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>",
+                        "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>",
                         "<br/>",
-                        "<code class='text-blue-400'>panalo</code> - Ipakita ang iyong katayuan ngayon sa laro</code>",
+                        "<code class='text-blue-400'>receipt</code> - Ililista nito yung magpapatunay na tapos ka na sa laro</code>",
+                        "<br/>",
+                        "<code>Below are part of a more advanced commands and will help you reach the secret 7th game</code>",
                         "<br/>",
                         "<code class='text-yellow-400'>lns</code> - Linisin ang lugar",
                         "<code class='text-yellow-400'>lugar</code> - Sabihin kung nasaang folder ka na",
@@ -235,7 +237,7 @@ const commands = {
         
     },
 
-    "panalo" : async (commands, props) => {
+    "receipt" : async (commands, props) => {
         props = await JSON.parse(props)
         let player = props.player
         
@@ -267,6 +269,7 @@ const commands = {
             orll : player.eukabsmorli,
             wtwl : player.eukabsmwotwil,
             tlgm : player.eukabsmtlgb,
+            salt : 'tanginamotalaga'
         }))
 
         switch(props.status){

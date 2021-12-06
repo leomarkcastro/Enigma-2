@@ -54,10 +54,13 @@ export default function Orbs() {
 
   function deal(isD){
     if (isD){
-      if ((Math.random() * 100) < chance){
+      let ch = (Math.random() * 100)
+      if (ch < chance){
+        soundList.success.play();
         time = Math.floor(time*((100 - posD) / 100))
       }
       else{
+        soundList.wrong.play();
         time = Math.floor(time*((100 + negD) / 100))
       }
     }
@@ -132,13 +135,14 @@ export default function Orbs() {
             <p className={`text-9xl mb-10 ${isLegit ? "text-blue-400" : "text-red-400"}`}>
               {Math.floor(tim/3600)}<span className="text-xl">hrs</span> {Math.floor(tim/60)%60}<span className="text-xl">mins</span> {tim%60}<span className="text-xl">secs</span>
             </p>
-            <p>It is simple, you just have to keep this window open for 60 minutes! You can do anything else!</p>
+            <p>It is simple, you just have to keep this tab open for 60 minute!</p>
+            <p>Every 30 seconds, an offer will come to you to ease your situation</p>
             { !isLegit && <p className="mt-5 text-red-400">Counter broken because you lost focus on page</p> }
             {
               isOffer && 
               <div className="m-2 mt-6 p-4 border text-center">
                 <p className="mb-4">An Offer is Here!</p>
-                <p className="mb-4 text-3xl">{chance}% chance!</p>
+                <p className="mb-4 text-3xl">{chance}% chance of Winning!</p>
                 <p className="text-sm"><span className="text-green-400">If you Win</span>: Bibilis yung laro ng {posD}%</p>
                 <p className="text-sm"><span className="text-red-400">If you Lose</span>: Tatagal pa yung laro ng {negD}%</p>
                 <div className="p-2">

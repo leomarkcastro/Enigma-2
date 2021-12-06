@@ -127,6 +127,8 @@ export default function NotePass() {
   const [gameLoaded, setGameLoaded] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [totalScore, setProgress] = useState(0);
+  const [notes, setNotes] = useState([]);
+  const [curNote, setCurNote] = useState(-1);
   let prep_work = cryptoJs.AES.decrypt;
   const [finish, setFinish] = useState(false);
 
@@ -144,21 +146,31 @@ export default function NotePass() {
   function playMusic_play(toPlay, i, delay) {
     setTimeout(() => {
       letterList[toPlay[i]].note.play();
+      setCurNote(i+1)
 
       if (i + 1 < toPlay.length) {
         playMusic_play(toPlay, i + 1, delay);
       }
+      else{
+        setCurNote(-1)
+      }
     }, delay);
+  }
+
+  function playMusic_once(i) {
+    letterList[i].note.play();
   }
 
   function playMusic() {
     let toPlay = node_setup[totalScore].key;
+    setCurNote(0)
     playMusic_play(toPlay, 0, 1000);
   }
 
   function checkAnswer() {
     let tval = val.toLowerCase();
     if (tval == node_setup[totalScore].answer) {
+      node_setup[totalScore+1] && setNotes(node_setup[totalScore+1].key)
       setProgress(totalScore + 1);
       setVal("");
     }
@@ -174,6 +186,7 @@ export default function NotePass() {
 
     node_setup = dd;
     targetPoints = node_setup.length;
+    setNotes(node_setup[totalScore].key)
     setGameLoaded(true);
   }
 
@@ -252,8 +265,15 @@ export default function NotePass() {
                 className="border border-white p-2.5 m-2.5 hover:bg-gray-400 hover:text-black"
                 onClick={playMusic}
               >
-                Play Clue [use Audio Device]
+                Play Clue As A Whole[use Audio Device]
               </button>
+              <div className="flex mb-4">
+                {
+                  notes.map((e, bi) => <button className={`border border-white p-2 m-1 hover:bg-white transition-colors ${curNote == bi ? 'bg-white' : ''}`} key={uuid()} onClick={playMusic_once.bind(this, e)} >&nbsp;</button>)
+                }
+              </div>
+              
+              <p>ABC means &lsquo;Do-Re-Mi&rsquo;</p>
               <div className="w-1/3 mx-auto mt-8">
                 <div className="w-full border h-2">
                   <div
