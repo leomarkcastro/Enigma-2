@@ -47,66 +47,6 @@ const root = directory(
     true,
     {
         ...directory("enigma", true, {
-            ...directory('pick_plock', true, {
-                ...file("url_to_game.txt", true, [
-                    "Pick Lock <br/><br/>",
-                    "The link to the game is <a class='text-green-500' href='/toothpickman'>this</a>. This will redirect you to the game<br/><br/>"
-                ]),
-                ...file("how_to_play.txt", true, [
-                    "Like, just play the game. Some cursor rotates and you need to make it hit certain points in the lock to win.<br/><br/>",
-                    "Progress bar fills as you succesfully breach a lock. Fill it completely till an alert shows that you had succesfully finished the game.<br/><br/>"
-                ]),
-            }),
-            ...directory('do_the_shuffle', true, {
-                ...file("url_to_game.txt", true, [
-                    "Cards Shuffle<br/><br/>",
-                    "The link to the game is <a class='text-green-500' href='/fivecentcasino'>this</a>. This will redirect you to the game<br/><br/>"
-                ]),
-                ...file("how_to_play.txt", true, [
-                    "A deck of cards. One of them has a star. Then it will be shuffled, after shuffling, pick the right card<br/><br/>",
-                    "Progress bar fills as you succesfully breach a lock. Fill it completely till an alert shows that you had succesfully finished the game.<br/><br/>"
-                ]),
-            }),
-            ...directory('hack_hear', true, {
-                ...file("url_to_game.txt", true, [
-                    "Note Password <br/><br/>",
-                    "The link to the game is <a class='text-green-500' href='/earsastheeye'>this</a>. This will redirect you to the game<br/><br/>"
-                ]),
-                ...file("how_to_play.txt", true, [
-                    "Each letter in the keyboard were represented by a note in the piano. If you check the clue, it will play a series of notes directly representing the password itself. Try to guess it<br/><br/>",
-                    "A good ear memory will help you greatly in this challenge. Also take notes if you can.<br/><br/>"
-                ]),
-            }),
-            ...directory('revolut', true, {
-                ...file("url_to_game.txt", true, [
-                    "Orbitals<br/><br/>",
-                    "The link to the game is <a class='text-green-500' href='/onefortwoback'>this</a>. This will redirect you to the game<br/><br/>"
-                ]),
-                ...file("how_to_play.txt", true, [
-                    "Try to light all of the light in the orbs orbit.<br/><br/>",
-                    "It only activates 3 adjacent orbs per click. Good luck!.<br/><br/>"
-                ]),
-            }),
-            ...directory('advent_dux', true, {
-                ...file("url_to_game.txt", true, [
-                    "Atlas Venture <br/><br/>",
-                    "The link to the game is <a class='text-green-500' href='/bizarreadvents'>this</a>. This will redirect you to the game<br/><br/>"
-                ]),
-                ...file("how_to_play.txt", true, [
-                    "Try to light all of the light in the orbs orbit.<br/><br/>",
-                    "It only activates 3 adjacent orbs per click. Good luck!.<br/><br/>"
-                ]),
-            }),
-            ...directory('60_min_misery', true, {
-                ...file("url_to_game.txt", true, [
-                    "60 Minute Misery <br/><br/>",
-                    "The link to the game is <a class='text-green-500' href='/tricklegamble'>this</a>. This will redirect you to the game<br/><br/>"
-                ]),
-                ...file("how_to_play.txt", true, [
-                    "Wait for the 60 mins counter to turn to 0.<br/><br/>",
-                    "Deals will come on you while you were waiting, showing ways to increase/decrease your wait time.<br/><br/>"
-                ]),
-            }),
             ...directory('8e6s23as5f', true, {
                 ...file("url_to_game.txt", true, [
                     "Crypted <br/><br/>",
@@ -125,12 +65,41 @@ const root = directory(
                 ]),
                 ...file("some_tips.txt", true, [
                     "Some Tips<br/><br/>",
-                    "<span class='text-blue-500'>#1</span> Base94 Enc/Dec <span class='text-green-500'>https://wtools.io/base91-encode-decode-online</span><br/><br/>",
-                    "<span class='text-blue-500'>#1</span> Base64 Encode <span class='text-green-500'>https://base64.guru/converter/encode/image</span><br/><br/>",
-                    "<span class='text-blue-500'>#1</span> Base64 Decode <span class='text-green-500'>https://codebeautify.org/base64-to-image-converter</span><br/><br/>",
-                    "<span class='text-blue-500'>#1</span> AES128 Enc/Dec <span class='text-green-500'>https://www.devglan.com/online-tools/aes-encryption-decryption</span><br/><br/>",
+                    "<span class='text-blue-500'>#1</span> Base94 Enc/Dec <span class='text-green-500'>https://wtools.io/base91-encode-decode-online</span><br/>",
+                    "<span class='text-blue-500'>#2</span> Base64 Encode <span class='text-green-500'>https://base64.guru/converter/encode/image</span><br/>",
+                    "<span class='text-blue-500'>#3</span> Base64 Decode <span class='text-green-500'>https://codebeautify.org/base64-to-image-converter</span><br/>",
+                    "<span class='text-blue-500'>#4</span> AES128 Enc/Dec <span class='text-green-500'>https://www.devglan.com/online-tools/aes-encryption-decryption</span><br/><br/>",
                 ]),
             }),
+            // lock
+            ...file("Codec_10.txt", true, [
+                "A Hidden Message That Lies Within the Numbers<br/>",
+                "Discover it and you will uncover a key linking you to a game<br/><br/>",
+                `9 8 ${blue(1)} 1 0 5<br/>`,
+                `2 1 2 2 3 9<br/>`,
+                `7 4 1 1 4 5<br/>`,
+                `1 1 4 6 1 0<br/>`,
+                `1 7 9 7 8 1<br/>`,
+                `0 0 9 1 1 8<br/>`,
+                `${blue(1)} 1 0 1 2 1<br/>`,
+                `1 0 3 1 1 6<br/>`,
+                `${blue(4)} 1 1 5 0 0<br/>`,
+            ]),
+            ...file("blit_what.txt", true, [
+                "A Hidden Message That Lies Within the Crypted Gibberish<br/>",
+                "Discover it and you will uncover a key linking you to a game<br/><br/>",
+                `[ ${green("^z,&lt;v;ueR#;#ex8j")} ]<br/>`,
+            ]),
+            ...file("stellar_mistake.txt", true, [
+                "A Hidden Message That Lies Within the Jumbled Letters<br/>",
+                "Discover it and you will uncover a key linking you to a game<br/><br/>",
+                `[ ${green("Y E E A H R E S T A E")} ]<br/>`,
+            ]),
+            ...file("staged_recon.txt", true, [
+                "A Hidden Message That Lies Within the Emojis<br/>",
+                "Discover it and you will uncover a key linking you to a game<br/><br/>",
+                `[ 🎯 🆗 👴 👅 😆 🥞 🍧 🌵 🎹 🧲 ➕ 🤢 ]<br/>`,
+            ]),
         }),
         ...directory("about", true, {
             ...directory("dev_notes", true, {
@@ -155,7 +124,7 @@ const root = directory(
                     "Who wrote all of this?<br/><br/>",
                     "IT'S ALL ME. LEO MARK CASTRO. YAP. THAT'S RIGHT. ITS ALL ME BABY. I HAVE NO CLEAR DIRECTION FOR THIS GAME SO IT WAS HARD FOR ME TO RECRUIT ANYONE BECAUSE IF I INVOLVE ANYONE IN THE GAME DEV OF THIS, THEN THINGS WONT BE AS FLEXIBLE AND FAST.<br/><br/>",
                     "AND WE'RE ALL UNMOTIVATED AT THIS POINT SO I DON'T REALLY THINK I CAN CONVINCE ANYONE TO JOIN ME IN THE DEV OF THIS.<br/><br/>",
-                    "P.S if you're intersted in the development of such website/or games like this in the future. Feel free to contact me so that I have reasons to contact you in the future<br/><br/>",
+                    "P.S if you're intersted in the development of such website/or games like this in the future. Feel free to contact me (Leo Castro || BS - CpE) so that I have reasons to contact you in the future. You can be a writer interested in creating lores for a story, a code developer (plus if you have experience in web dev), graphics artist so that we can add unique touch to these games<br/><br/>",
                     "(What to do when I'm interested?) Just PM me this screenshot and *wink* at me.<br/><br/>",
                 ]),
             }),
@@ -172,8 +141,8 @@ const root = directory(
         }),
         ...file("readme.txt", true, [
             "Readme<br/><br/>",
-            "You have to use this console to find the games. The games come in the form of website links which are located on some file inside the folders of this console<br/><br/>",
-            `Note that you're gonna use  ${green("dir")}, ${blue("move")}, and ${yellow("read")} commands while exploring the labyrinth that is this console. Not really a labyrinth. All the games are located in the 'enigma' folder and dev notes are located in the 'about' folder.<br/><br/>`,
+            "Type tulong to see all the games playable. Some games will be locked until their designated day comes<br/><br/>",
+            `You can use ${green("lam")}, ${blue("gal")}, and ${yellow("basa")} to explore the Enigma Console to search for clues within the console to look for ways to speed up your waiting.<br/><br/>`,
 
         ]),
     }
