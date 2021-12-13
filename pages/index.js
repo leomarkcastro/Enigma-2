@@ -40,7 +40,7 @@ export default function Home() {
     command = command.replaceAll("/", '~')
     let preload = locSecStore.getItem(`eukabsmcom_${command}`)
     let status = locSecStore.getItem(`eukabsmstatus`) || "000"
-    let player = locSecStore.getItem(`geasfasdgasdfas`) || {}
+    let player = locSecStore.getItem(`jsknfeiqn`) || {}
     if (preload){
       return preload
     }
@@ -89,7 +89,7 @@ export default function Home() {
     
 
     (async function () {
-      let loaded = locSecStore.getItem("eukabsmfirstLoad")
+      let loaded = locSecStore.getItem("564fseukabsmfirstLoad")
 
       let gameStart = check_start_date()
 
@@ -129,7 +129,7 @@ export default function Home() {
       }
       
       if (gameStart){
-        let player = locSecStore.getItem("geasfasdgasdfas")
+        let player = locSecStore.getItem("564fsjsknfeiqn")
 
         await Writer.write(`Welcome! ${player.eukabsmname || "null"}`);
         await Writer.write("Ang terminal ay bukas na. Sabihin ang iyong utos");
@@ -178,10 +178,10 @@ export default function Home() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
     let first_start = false
-    let player = locSecStore.getItem("geasfasdgasdfas")
+    let player = locSecStore.getItem("564fsjsknfeiqn")
 
     if (!player){
-      locSecStore.setItem("geasfasdgasdfas", {})
+      locSecStore.setItem("jsknfeiqn", {})
       first_start = true
     }
     else if (!player["eukabsmname"]){
@@ -200,8 +200,8 @@ export default function Home() {
 
   const saveName = () => {
     if (name){
-      let player = locSecStore.getItem("geasfasdgasdfas")
-      locSecStore.setItem("geasfasdgasdfas", {...player, eukabsmname: name})
+      let player = locSecStore.getItem("564fsjsknfeiqn")
+      locSecStore.setItem("jsknfeiqn", {...player, eukabsmname: name})
       setFirstStart(false)
       glitcheryIntro()
     }
@@ -304,7 +304,7 @@ export default function Home() {
           let dd = herring.gyps(policy_push, result.player, param_session_id)
           if (dd){
             dd = JSON.parse(dd.toString(pol));
-            result.player && locSecStore.setItem("geasfasdgasdfas", dd)
+            result.player && locSecStore.setItem("jsknfeiqn", dd)
           }
         }
         

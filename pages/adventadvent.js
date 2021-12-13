@@ -91,15 +91,15 @@ export default function Explorer() {
     //console.log(process)
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
-    if (!locSecStore.getItem("geasfasdgasdfas")){
-      locSecStore.setItem("geasfasdgasdfas", {})
+    if (!locSecStore.getItem("564fsjsknfeiqn")){
+      locSecStore.setItem("jsknfeiqn", {})
     }
   }
 
   function loadStart(){
-    let dat = locSecStore.getItem("geasfasdgasdfas")
+    let dat = locSecStore.getItem("564fsjsknfeiqn")
     if (! dat.eukabsms_magellan ){
-      locSecStore.setItem("geasfasdgasdfas", {...dat, eukabsms_magellan: true})
+      locSecStore.setItem("jsknfeiqn", {...dat, eukabsms_magellan: true})
     }
     if (dat.eukabsmmagellan == true){
       setFinish(true)
@@ -110,8 +110,8 @@ export default function Explorer() {
     if (totalScore == (targetPoints)){
       soundList.l_success.play()
       setFinish(true)
-      let dat = locSecStore.getItem("geasfasdgasdfas")
-      locSecStore.setItem("geasfasdgasdfas", {...dat, eukabsmmagellan: true})
+      let dat = locSecStore.getItem("564fsjsknfeiqn")
+      locSecStore.setItem("jsknfeiqn", {...dat, eukabsmmagellan: true})
     }
   }, [totalScore]);
 
