@@ -18,7 +18,7 @@ export default function Shrmith() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
     if (!locSecStore.getItem("564fsjsknfeiqn")){
-      locSecStore.setItem("jsknfeiqn", {})
+      locSecStore.setItem("564fsjsknfeiqn", {})
     }
   }
 
@@ -34,7 +34,7 @@ export default function Shrmith() {
     if(!(dat.eukabsmwotwil)){
       setFinish(true)
       soundList.l_success.play()
-      locSecStore.setItem("jsknfeiqn", {...dat, eukabsmwotwil: true})
+      locSecStore.setItem("564fsjsknfeiqn", {...dat, eukabsmwotwil: true})
     }
   }
 

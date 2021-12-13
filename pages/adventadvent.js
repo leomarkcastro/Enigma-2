@@ -92,14 +92,14 @@ export default function Explorer() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
     if (!locSecStore.getItem("564fsjsknfeiqn")){
-      locSecStore.setItem("jsknfeiqn", {})
+      locSecStore.setItem("564fsjsknfeiqn", {})
     }
   }
 
   function loadStart(){
     let dat = locSecStore.getItem("564fsjsknfeiqn")
     if (! dat.eukabsms_magellan ){
-      locSecStore.setItem("jsknfeiqn", {...dat, eukabsms_magellan: true})
+      locSecStore.setItem("564fsjsknfeiqn", {...dat, eukabsms_magellan: true})
     }
     if (dat.eukabsmmagellan == true){
       setFinish(true)
@@ -111,7 +111,7 @@ export default function Explorer() {
       soundList.l_success.play()
       setFinish(true)
       let dat = locSecStore.getItem("564fsjsknfeiqn")
-      locSecStore.setItem("jsknfeiqn", {...dat, eukabsmmagellan: true})
+      locSecStore.setItem("564fsjsknfeiqn", {...dat, eukabsmmagellan: true})
     }
   }, [totalScore]);
 

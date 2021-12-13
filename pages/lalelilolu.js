@@ -195,14 +195,14 @@ export default function NotePass() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY);
 
     if (!locSecStore.getItem("564fsjsknfeiqn")) {
-      locSecStore.setItem("jsknfeiqn", {});
+      locSecStore.setItem("564fsjsknfeiqn", {});
     }
   }
 
   function loadStart() {
     let dat = locSecStore.getItem("564fsjsknfeiqn");
     if (!dat.eukabsms_ntpass) {
-      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsms_ntpass: true });
+      locSecStore.setItem("564fsjsknfeiqn", { ...dat, eukabsms_ntpass: true });
     }
     if (dat.eukabsmntpass == true) {
       setFinish(true);
@@ -214,7 +214,7 @@ export default function NotePass() {
       soundList.l_success.play();
       setFinish(true);
       let dat = locSecStore.getItem("564fsjsknfeiqn");
-      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsmntpass: true });
+      locSecStore.setItem("564fsjsknfeiqn", { ...dat, eukabsmntpass: true });
     }
   }, [totalScore]);
 

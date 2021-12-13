@@ -83,14 +83,14 @@ export default function LockPick() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY);
 
     if (!locSecStore.getItem("564fsjsknfeiqn")) {
-      locSecStore.setItem("jsknfeiqn", {});
+      locSecStore.setItem("564fsjsknfeiqn", {});
     }
   }
 
   function loadStart() {
     let dat = locSecStore.getItem("564fsjsknfeiqn");
     if (!dat.eukabsms_ttpkmn) {
-      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsms_ttpkmn: true });
+      locSecStore.setItem("564fsjsknfeiqn", { ...dat, eukabsms_ttpkmn: true });
     }
     if (dat.eukabsmttpkmn == true) {
       setFinish(true);
@@ -112,7 +112,7 @@ export default function LockPick() {
       soundList.l_success.play();
       setFinish(true);
       let dat = locSecStore.getItem("564fsjsknfeiqn");
-      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsmttpkmn: true });
+      locSecStore.setItem("564fsjsknfeiqn", { ...dat, eukabsmttpkmn: true });
     }
   }, [points]);
 
