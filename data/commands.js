@@ -81,12 +81,12 @@ const commands = {
         props = await JSON.parse(props)
 
         let linklist = {
-            "lock": "/jackman",
-            "cards": "/cashicashi",
-            "atlas": "/adventadvent",
-            "notes": "/lalelilolu",
-            "orbits": "/donutman",
-            "30min": "/sinigang",
+            "lock": "/toothpickman",
+            "cards": "/fivecentcasino",
+            "atlas": "/bizarreadvents",
+            "notes": "/earsastheeye",
+            "orbits": "/onefortwoback",
+            "30min": "/tricklegamble",
         }
         
         if (commands[1] in linklist){
