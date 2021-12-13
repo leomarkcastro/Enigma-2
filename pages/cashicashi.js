@@ -195,16 +195,16 @@ export default function Shuffler() {
     //console.log(process)
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY);
 
-    if (!locSecStore.getItem("jsknfeiqn")) {
-      locSecStore.setItem("jsknfeiqn", {});
+    if (!locSecStore.getItem("geasfasdgasdfas")) {
+      locSecStore.setItem("geasfasdgasdfas", {});
     }
   }
 
   function loadStart() {
-    let dat = locSecStore.getItem("jsknfeiqn");
+    let dat = locSecStore.getItem("geasfasdgasdfas");
 
     if (!dat.eukabsms_sfcd) {
-      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsms_sfcd: true });
+      locSecStore.setItem("geasfasdgasdfas", { ...dat, eukabsms_sfcd: true });
     }
 
     if (dat.eukabsmsfcd == true) {
@@ -216,8 +216,8 @@ export default function Shuffler() {
     if (totalScore == targetPoints) {
       soundList.l_success.play();
       setFinish(true);
-      let dat = locSecStore.getItem("jsknfeiqn");
-      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsmsfcd: true });
+      let dat = locSecStore.getItem("geasfasdgasdfas");
+      locSecStore.setItem("geasfasdgasdfas", { ...dat, eukabsmsfcd: true });
     }
   }, [totalScore]);
 

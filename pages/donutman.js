@@ -79,15 +79,15 @@ export default function Orbs() {
     //console.log(process)
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY);
 
-    if (!locSecStore.getItem("jsknfeiqn")) {
-      locSecStore.setItem("jsknfeiqn", {});
+    if (!locSecStore.getItem("geasfasdgasdfas")) {
+      locSecStore.setItem("geasfasdgasdfas", {});
     }
   }
 
   function loadStart() {
-    let dat = locSecStore.getItem("jsknfeiqn");
+    let dat = locSecStore.getItem("geasfasdgasdfas");
     if (!dat.eukabsms_orli) {
-      locSecStore.setItem("jsknfeiqn", { ...dat, eukabsms_orli: true });
+      locSecStore.setItem("geasfasdgasdfas", { ...dat, eukabsms_orli: true });
     }
     if (dat.eukabsmorli == true) {
       setFinish(true);
@@ -102,12 +102,12 @@ export default function Orbs() {
       done &= cList[c];
     }
     if (done) {
-      let dat = locSecStore.getItem("jsknfeiqn");
+      let dat = locSecStore.getItem("geasfasdgasdfas");
 
       if (done && !(dat.eukabsmorli || false)) {
         setFinish(true);
         soundList.l_success.play();
-        locSecStore.setItem("jsknfeiqn", { ...dat, eukabsmorli: true });
+        locSecStore.setItem("geasfasdgasdfas", { ...dat, eukabsmorli: true });
       }
     }
   }, [cList]);

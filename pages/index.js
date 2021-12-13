@@ -17,6 +17,7 @@ let introText = [
   "<span class='yellow'>ICPEP.SE BulSU Chapter</span>",
   "Enigma 2 Console",
   `The first <span class="green">3</span> Winners has a prize of P250`,
+  "Sorry for the system reset for <span class='green'>Critical Patches</span>",
   "Loading Database..."
 ]
 
@@ -39,7 +40,7 @@ export default function Home() {
     command = command.replaceAll("/", '~')
     let preload = locSecStore.getItem(`eukabsmcom_${command}`)
     let status = locSecStore.getItem(`eukabsmstatus`) || "000"
-    let player = locSecStore.getItem(`jsknfeiqn`) || {}
+    let player = locSecStore.getItem(`geasfasdgasdfas`) || {}
     if (preload){
       return preload
     }
@@ -128,7 +129,7 @@ export default function Home() {
       }
       
       if (gameStart){
-        let player = locSecStore.getItem("jsknfeiqn")
+        let player = locSecStore.getItem("geasfasdgasdfas")
 
         await Writer.write(`Welcome! ${player.eukabsmname || "null"}`);
         await Writer.write("Ang terminal ay bukas na. Sabihin ang iyong utos");
@@ -177,10 +178,10 @@ export default function Home() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
     let first_start = false
-    let player = locSecStore.getItem("jsknfeiqn")
+    let player = locSecStore.getItem("geasfasdgasdfas")
 
     if (!player){
-      locSecStore.setItem("jsknfeiqn", {})
+      locSecStore.setItem("geasfasdgasdfas", {})
       first_start = true
     }
     else if (!player["eukabsmname"]){
@@ -199,8 +200,8 @@ export default function Home() {
 
   const saveName = () => {
     if (name){
-      let player = locSecStore.getItem("jsknfeiqn")
-      locSecStore.setItem("jsknfeiqn", {...player, eukabsmname: name})
+      let player = locSecStore.getItem("geasfasdgasdfas")
+      locSecStore.setItem("geasfasdgasdfas", {...player, eukabsmname: name})
       setFirstStart(false)
       glitcheryIntro()
     }
@@ -303,7 +304,7 @@ export default function Home() {
           let dd = herring.gyps(policy_push, result.player, param_session_id)
           if (dd){
             dd = JSON.parse(dd.toString(pol));
-            result.player && locSecStore.setItem("jsknfeiqn", dd)
+            result.player && locSecStore.setItem("geasfasdgasdfas", dd)
           }
         }
         

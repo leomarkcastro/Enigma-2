@@ -17,24 +17,24 @@ export default function Shrmith() {
     //console.log(process)
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
-    if (!locSecStore.getItem("jsknfeiqn")){
-      locSecStore.setItem("jsknfeiqn", {})
+    if (!locSecStore.getItem("geasfasdgasdfas")){
+      locSecStore.setItem("geasfasdgasdfas", {})
     }
   }
 
   function loadStart(){
-    let dat = locSecStore.getItem("jsknfeiqn")
+    let dat = locSecStore.getItem("geasfasdgasdfas")
     if (dat.eukabsmwotwil == true){
       setFinish(true)
     }
   }
 
   function setVisit(){
-    let dat = locSecStore.getItem("jsknfeiqn")
+    let dat = locSecStore.getItem("geasfasdgasdfas")
     if(!(dat.eukabsmwotwil)){
       setFinish(true)
       soundList.l_success.play()
-      locSecStore.setItem("jsknfeiqn", {...dat, eukabsmwotwil: true})
+      locSecStore.setItem("geasfasdgasdfas", {...dat, eukabsmwotwil: true})
     }
   }
 

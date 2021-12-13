@@ -58,13 +58,13 @@ const commands = {
                         "tulong - Ilista lahat ng mga utos na pwedeng gawin",
                         "<br/>",
 
-                        "<code class='text-purple-400'>laro cards</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>",
-                        "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>",
+                        "<code class='text-purple-400'>laro shifter</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>",
+                        "<code class='text-purple-400'>laro orbos</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>",
                         
-                        lockedTilDate(check_batch1_date, batch1_date, "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>"),
-                        lockedTilDate(check_batch2_date, batch1_date, "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>"),
-                        lockedTilDate(check_batch3_date, batch2_date, "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>"),
-                        lockedTilDate(check_batch4_date, batch3_date, "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>"),
+                        lockedTilDate(check_batch1_date, batch1_date, "<code class='text-purple-400'>laro worlds</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>"),
+                        lockedTilDate(check_batch2_date, batch1_date, "<code class='text-purple-400'>laro 60min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>"),
+                        lockedTilDate(check_batch3_date, batch2_date, "<code class='text-purple-400'>laro picka_c</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>"),
+                        lockedTilDate(check_batch4_date, batch3_date, "<code class='text-purple-400'>laro pickle</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>"),
 
                         "<br/>",
                         "<code class='text-blue-400'>receipt</code> - Ililista nito yung magpapatunay na tapos ka na sa laro</code>",
@@ -92,12 +92,12 @@ const commands = {
         props = await JSON.parse(props)
 
         let linklist = {
-            "lock": "/jackman",
-            "cards": "/cashicashi",
-            "atlas": "/adventadvent",
-            "notes": "/lalelilolu",
-            "orbits": "/donutman",
-            "30min": "/sinigang",
+            "pickle": "/jackman",
+            "shifter": "/cashicashi",
+            "worlds": "/adventadvent",
+            "picka_c": "/lalelilolu",
+            "orbos": "/donutman",
+            "60min": "/sinigang",
         }
         
         if (commands[1] in linklist){
@@ -289,7 +289,7 @@ const commands = {
             orll : player.eukabsmorli,
             wtwl : player.eukabsmwotwil,
             tlgm : player.eukabsmtlgb,
-            salt : 'bryanaguinaldo_lodi_pokayo'
+            salt : 'we_are_moving_forward'
         }))
 
         switch(props.status){
