@@ -1,6 +1,7 @@
 import cryptoJs from "crypto-js"
 import cases from "./cases"
 import { getDirectory, getFile } from "./file_list"
+import { batch1_date, batch2_date, batch3_date, batch4_date, check_batch1_date, check_batch2_date, check_batch3_date, check_batch4_date } from "./gamestart"
 import fetch_quote from "./quotes"
 
 const easter = {
@@ -34,6 +35,13 @@ const easter = {
     }
 }
 
+function lockedTilDate(func_check, lockdate, unlock){
+    if (func_check()){
+        return unlock
+    }
+    return `<code class='text-purple-400'>laro <span class='text-red-500'>&lt;LOCKED&gt;</span></code> - Game will be unlocked on ${lockdate}`
+}
+
 const commands = {
     
     ...easter,
@@ -49,16 +57,19 @@ const commands = {
                         "========================================",
                         "tulong - Ilista lahat ng mga utos na pwedeng gawin",
                         "<br/>",
-                        "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>",
+
                         "<code class='text-purple-400'>laro cards</code> - Itatalon ka sa page na mapaglalaruan mo ang card shuffling game</code>",
-                        "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>",
-                        "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>",
                         "<code class='text-purple-400'>laro orbits</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>",
-                        "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>",
+                        
+                        lockedTilDate(check_batch1_date, batch1_date, "<code class='text-purple-400'>laro atlas</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>"),
+                        lockedTilDate(check_batch2_date, batch1_date, "<code class='text-purple-400'>laro 30min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>"),
+                        lockedTilDate(check_batch3_date, batch2_date, "<code class='text-purple-400'>laro notes</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>"),
+                        lockedTilDate(check_batch4_date, batch3_date, "<code class='text-purple-400'>laro lock</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>"),
+
                         "<br/>",
                         "<code class='text-blue-400'>receipt</code> - Ililista nito yung magpapatunay na tapos ka na sa laro</code>",
                         "<br/>",
-                        "<code>Below are part of a more advanced commands and will help you reach the secret 7th game</code>",
+                        "<code>Below are commands to let you navigate the Enigma Console for Extra Stuffs. (Not really required to do so but can help you speed up the game)</code>",
                         "<br/>",
                         "<code class='text-yellow-400'>lns</code> - Linisin ang lugar",
                         "<code class='text-yellow-400'>lugar</code> - Sabihin kung nasaang folder ka na",

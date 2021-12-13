@@ -67,17 +67,12 @@ export default function Shuffler() {
     "♥ ",
     "♥ ",
     "♥ ",
-    "♥ ",
-    "♥ ",
-    "♥ ",
-    "♥ ",
-    "♥ ",
   ]);
   const [finish, setFinish] = useState(false);
 
   const [showSplash, setShowSplash] = useState(true);
 
-  let shuffleC = 3;
+  let shuffleC = 5;
 
   function shuffle(array) {
     let currentIndex = array.length,
@@ -159,16 +154,16 @@ export default function Shuffler() {
       if (right) {
         switch (levelInc) {
           case 0:
-            gameStart(boxWC, Math.min(boxHC+2,4), shuffleC);
+            gameStart(boxWC, Math.min(boxHC+2,6), shuffleC);
             break;
           case 1:
-            gameStart(Math.min(boxWC+2,8), boxHC, shuffleC);
+            gameStart(Math.min(boxWC+2,10), boxHC, shuffleC);
             break;
           case 2:
             gameStart(boxWC, boxHC, shuffleC + 2);
             break;
           case 3:
-            gameStart(Math.min(boxWC+2,8), Math.min(boxHC+2,4), shuffleC + 2);
+            gameStart(Math.min(boxWC+2,10), Math.min(boxHC+2,6), shuffleC + 2);
             break;
         }
       } else {

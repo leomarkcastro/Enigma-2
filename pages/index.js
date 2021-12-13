@@ -359,7 +359,7 @@ export default function Home() {
               <pre>
                 
                 
-                <output className={inpActive && `hidden`} id="output"></output>
+                <output className={inpActive ? `hidden` : ""} id="output"></output>
 
                 {
                   inpActive ?
