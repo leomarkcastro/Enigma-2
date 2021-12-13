@@ -251,6 +251,15 @@ const commands = {
     "receipt" : async (commands, props) => {
         props = await JSON.parse(props)
         let player = props.player
+
+        //player.eukabsmname = 'test'
+        //player.eukabsmttpkmn = true
+        //player.eukabsmsfcd  = true
+        //player.eukabsmmagellan  = true
+        //player.eukabsmntpass  = true
+        //player.eukabsmorli  = true
+        //player.eukabsmwotwil  = true
+        //player.eukabsmtlgb  = true
         
         if (!player){
             return {
@@ -280,7 +289,7 @@ const commands = {
             orll : player.eukabsmorli,
             wtwl : player.eukabsmwotwil,
             tlgm : player.eukabsmtlgb,
-            salt : 'tanginamotalaga'
+            salt : 'bryanaguinaldo_lodi_pokayo'
         }))
 
         switch(props.status){
