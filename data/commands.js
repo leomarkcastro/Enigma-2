@@ -92,11 +92,11 @@ const commands = {
         props = await JSON.parse(props)
 
         let linklist = {
-            "pickle": "/jackman",
             "shifter": "/cashicashi",
+            "orbos": "/donutman",
+            "pickle": "/jackman",
             "worlds": "/adventadvent",
             "picka_c": "/lalelilolu",
-            "orbos": "/donutman",
             "60min": "/sinigang",
         }
         

@@ -72,33 +72,42 @@ const root = directory(
                 ]),
             }),
             // lock
+
+            /*
+                "pickle": "/jackman",
+                "worlds": "/adventadvent",
+                "picka_c": "/lalelilolu",
+                "60min": "/sinigang",
+            */
+
             ...file("Codec_10.txt", true, [
                 "A Hidden Message That Lies Within the Numbers<br/>",
                 "Discover it and you will uncover a key linking you to a game<br/><br/>",
-                `9 8 ${blue(1)} 1 0 5<br/>`,
-                `2 1 2 2 3 9<br/>`,
-                `7 4 1 1 4 5<br/>`,
-                `1 1 4 6 1 0<br/>`,
-                `1 7 9 7 8 1<br/>`,
-                `0 0 9 1 1 8<br/>`,
-                `${blue(1)} 1 0 1 2 1<br/>`,
-                `1 0 3 1 1 6<br/>`,
-                `${blue(4)} 1 1 5 0 0<br/>`,
+                // jackman
+                `1 0 6 1<br/>`,
+                `9 7 2 9<br/>`,
+                `9 3 1 0<br/>`,
+                `7 4 1 0<br/>`,
+                `9 5 9 7<br/>`,
+                `6 1 1 0<br/>`,
             ]),
             ...file("blit_what.txt", true, [
                 "A Hidden Message That Lies Within the Crypted Gibberish<br/>",
                 "Discover it and you will uncover a key linking you to a game<br/><br/>",
-                `[ ${green("^z,&lt;v;ueR#;#ex8j")} ]<br/>`,
+                //sinigang
+                `[ ${green("1aTg&.]@QS")} ]<br/>`,
             ]),
             ...file("stellar_mistake.txt", true, [
                 "A Hidden Message That Lies Within the Jumbled Letters<br/>",
                 "Discover it and you will uncover a key linking you to a game<br/><br/>",
-                `[ ${green("Y E E A H R E S T A E")} ]<br/>`,
+                // lalelilolu
+                `[ ${green("L E I L O L U L L A")} ]<br/>`,
             ]),
             ...file("staged_recon.txt", true, [
                 "A Hidden Message That Lies Within the Emojis<br/>",
                 "Discover it and you will uncover a key linking you to a game<br/><br/>",
-                `[ 🎯 🆗 👴 👅 😆 🥞 🍧 🌵 🎹 🧲 ➕ 🤢 ]<br/>`,
+                //adventadvent
+                `[ 🦾 ☠ 🧛 🦻 🤓 🥄 ➕ 😔 ✌ 📧 🆕 🧿 ]<br/>`,
             ]),
         }),
         ...directory("about", true, {
