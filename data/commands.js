@@ -311,7 +311,7 @@ const commands = {
                         `<code>Player</code> - [${player.eukabsmname}]`,
                         `<code>Progress Hash</code> - ${hash}`,
                         "<br/><br/>",
-                        (totalP >= 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro [CpE . Member of ICPEP BSU] with this picture, send a wink and wait patiently. You only need to solve 6 problems to be considered a winner" : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
+                        (totalP >= 6) ? "Instruction to Winner: Screenshot this receipt, message Leo Mark Castro [CpE . Member of ICPEP BSU] with this picture, send a wink and wait patiently. You only need to solve 6 problems to be considered a winner. Winners will be announced and rewarded on Dec 18, Saturday along with ICPEP GA program" : "Instruction to Winner: &#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;&#9608;",
                         "<br/>===============================<br/><br/>",
                     ],
                     permanent: false,
