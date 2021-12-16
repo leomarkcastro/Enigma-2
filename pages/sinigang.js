@@ -17,7 +17,7 @@ export default function Orbs() {
   let legit = true
 
   const [finish, setFinish] = useState(false);
-  const [showSplash, setShowSplash] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   const [tim, setTim] = useState(time);
   const [isLegit, setLegit] = useState(true);
