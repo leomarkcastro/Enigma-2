@@ -16,8 +16,9 @@ import herring from "../data/herring";
 let introText = [
   "<span class='yellow'>ICPEP.SE BulSU Chapter</span>",
   "Enigma 2 Console",
-  `The first <span class="green">3</span> Winners has a prize of P250`,
-  "Sorry for the system reset for <span class='green'>Critical Patches</span>",
+  `Congratulations to the <span class="green">3</span> Winners!`,
+  "<span class='green'>Resty</span>, <span class='red'>Bryan</span> and <span class='text-blue-600'>Marion</span>",
+  "The code repository is open again for those interested",
   "Loading Database..."
 ]
 
