@@ -17,6 +17,7 @@ let introText = [
   "<span class='yellow'>ICPEP.SE BulSU Chapter</span>",
   "Enigma 2 Console",
   `The first <span class="green">3</span> Winners has a prize of P250`,
+  "Sorry for the system reset for <span class='green'>Critical Patches</span>",
   "Loading Database..."
 ]
 
@@ -37,13 +38,14 @@ export default function Home() {
 
   async function fetchCommand(command){
     command = command.replaceAll("/", '~')
-    let preload = locSecStore.getItem(`eukabsmcom_${command}`)
-    let status = locSecStore.getItem(`eukabsmstatus`) || "000"
-    let player = locSecStore.getItem(`jsknfeiqn`) || {}
+    let preload = locSecStore.getItem(`564fseukabsmcom_${command}`)
+    let status = locSecStore.getItem(`564fseukabsmstatus`) || "000"
+    let player = locSecStore.getItem(`564fsjsknfeiqn`) || {}
     if (preload){
       return preload
     }
     let pak = JSON.stringify({current_path, status, player})
+    
     let jsondata = herring.gyps(strap_pA, pak, param_session_id);
     jsondata = jsondata.toString();
     let data = await fetch(`/api/command/${command}`, {
@@ -88,7 +90,7 @@ export default function Home() {
     
 
     (async function () {
-      let loaded = locSecStore.getItem("eukabsmfirstLoad")
+      let loaded = locSecStore.getItem("564fseukabsmfirstLoad")
 
       let gameStart = check_start_date()
 
@@ -105,8 +107,8 @@ export default function Home() {
           await Writer.write("Successfully Connected To the Database");
           await Writer.write("");
           await Writer.write("<br/>");
-          locSecStore.setItem("eukabsmstatus", "000")
-          locSecStore.setItem("eukabsmfirstLoad", true)
+          locSecStore.setItem("564fseukabsmstatus", "000")
+          locSecStore.setItem("564fseukabsmfirstLoad", true)
         }
         else{
           await Writer.write("Database connection <span class='text-red-600'>ERROR</span>");
@@ -128,7 +130,7 @@ export default function Home() {
       }
       
       if (gameStart){
-        let player = locSecStore.getItem("jsknfeiqn")
+        let player = locSecStore.getItem("564fsjsknfeiqn")
 
         await Writer.write(`Welcome! ${player.eukabsmname || "null"}`);
         await Writer.write("Ang terminal ay bukas na. Sabihin ang iyong utos");
@@ -177,10 +179,10 @@ export default function Home() {
     locSecStore = _initSecSore(localStorage, process.env.NEXT_PUBLIC_EWS_KEY)
 
     let first_start = false
-    let player = locSecStore.getItem("jsknfeiqn")
+    let player = locSecStore.getItem("564fsjsknfeiqn")
 
     if (!player){
-      locSecStore.setItem("jsknfeiqn", {})
+      locSecStore.setItem("564fsjsknfeiqn", {})
       first_start = true
     }
     else if (!player["eukabsmname"]){
@@ -199,8 +201,8 @@ export default function Home() {
 
   const saveName = () => {
     if (name){
-      let player = locSecStore.getItem("jsknfeiqn")
-      locSecStore.setItem("jsknfeiqn", {...player, eukabsmname: name})
+      let player = locSecStore.getItem("564fsjsknfeiqn")
+      locSecStore.setItem("564fsjsknfeiqn", {...player, eukabsmname: name})
       setFirstStart(false)
       glitcheryIntro()
     }
@@ -295,7 +297,7 @@ export default function Home() {
       }
 
       if (result.type.indexOf(process.env.NEXT_PUBLIC_PX_STATUS) > -1){
-        result.new_stat && locSecStore.setItem("eukabsmstatus", result.new_stat)
+        result.new_stat && locSecStore.setItem("564fseukabsmstatus", result.new_stat)
       }
 
       if (result.type.indexOf(process.env.NEXT_PUBLIC_PX_PROGRESS) > -1){
@@ -303,7 +305,7 @@ export default function Home() {
           let dd = herring.gyps(policy_push, result.player, param_session_id)
           if (dd){
             dd = JSON.parse(dd.toString(pol));
-            result.player && locSecStore.setItem("jsknfeiqn", dd)
+            result.player && locSecStore.setItem("564fsjsknfeiqn", dd)
           }
         }
         
