@@ -62,9 +62,9 @@ const commands = {
                         "<code class='text-purple-400'>laro orbos</code> - Itatalon ka sa page na mapaglalaruan mo ang orbital puzzle game</code>",
                         
                         lockedTilDate(check_batch1_date, batch1_date, "<code class='text-purple-400'>laro worlds</code> - Itatalon ka sa page na mapaglalaruan mo ang atlas adventurer game</code>"),
-                        lockedTilDate(check_batch2_date, batch1_date, "<code class='text-purple-400'>laro 60min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>"),
-                        lockedTilDate(check_batch3_date, batch2_date, "<code class='text-purple-400'>laro picka_c</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>"),
-                        lockedTilDate(check_batch4_date, batch3_date, "<code class='text-purple-400'>laro pickle</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>"),
+                        lockedTilDate(check_batch1_date, batch1_date, "<code class='text-purple-400'>laro 60min</code> - Itatalon ka sa page na mapaglalaruan mo ang 30 min misery game</code>"),
+                        lockedTilDate(check_batch1_date, batch1_date, "<code class='text-purple-400'>laro picka_c</code> - Itatalon ka sa page na mapaglalaruan mo ang note picking game</code>"),
+                        lockedTilDate(check_batch1_date, batch1_date, "<code class='text-purple-400'>laro pickle</code> - Itatalon ka sa page na mapaglalaruan mo ang pick locking game</code>"),
 
                         "<br/>",
                         "<code class='text-blue-400'>receipt</code> - Ililista nito yung magpapatunay na tapos ka na sa laro</code>",
